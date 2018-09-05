@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <form action="" method="get">
+      <select id="color" onchange="colorChange()">
+        <option id="blue" value="blue" >Blue</option>
+        <option id="purple" value="purple" >Purple</option>
+        <option id="orange" value="orange" >Orange</option>
+        <option id="red" value="red" >Red</option>
+      </select>
+    </form>
+
+  </body>
+
+  <script>
+ function colorChange(){
+     let color = document.getElementById('color').value;
+     document.body.style.background = color;
+ }
+
+ </script>
+
+</html>
