@@ -7,8 +7,8 @@
   <body>
 <form  method="get" action="">
   <form action="">
-    <input type="radio" name="switch" id="on" value="on" onClick="document.getElementById('myImage').src='images/pic_bulbon.gif'"> ON<br>
-    <input type="radio" name="switch" id ="off" value="off" checked = "checked" onClick="document.getElementById('myImage').src='images/pic_bulboff.gif'"> OFF<br>
+    <input type="radio" name="switch" id="on" value="on" onClick="bulb(1)"/*"document.getElementById('myImage').src='images/pic_bulbon.gif'"*/> ON<br>
+    <input type="radio" name="switch" id ="off" value="off" checked = "checked" onClick="bulb(0)"/*"document.getElementById('myImage').src='images/pic_bulboff.gif'"*/> OFF<br>
     <input type="submit" name="submit" value="run"><br>
   </form>
 </form>
@@ -16,6 +16,17 @@
 
 
   </body>
+
+  <script>
+
+  function bulb(x){
+  let pic = document.getElementById("bulb");
+  if (x == 1){
+  pic.src="images/pic_bulbon.gif"
+  }
+  else
+  pic.src="images/pic_bulboff.gif"
+  }
 
 
 </html>
