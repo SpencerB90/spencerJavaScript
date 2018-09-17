@@ -13,9 +13,13 @@ function calculateTip(){
   let peopleAmt = document.getElementById("peopleamt").value;
 
   //check for 0 or null values
-  if (peopleAmt <= 0) {
+  if (peopleAmt <= 0 || isNaN(peopleAmt)){
     alert("You must enter the number or people, must be greater than 0.");
-    break;
+    return;
+  }
+  if(billAmt < 0 || isNaN(billAmt)){
+    alert("You must enter the bill amount, must be greater than 0.");
+    return;
   }
 
 //calculate total
