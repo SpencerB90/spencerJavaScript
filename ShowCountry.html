@@ -1,0 +1,112 @@
+<<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+
+  <body onload="hideInputs()">
+    <!-- country(dropdown) to Ukriane or US, Ukriane to Provence (dropdown) LVIV to city (dropdown) LVIV,
+    US to state (textbox)PA to city (dropdown) state college, lewistown -->
+    <form action="" method="get">
+      <div id="div_country">
+        <select name="country" id="country" onchange="showState()">
+          <!--could use <option> select disabled >select country</option>-->
+          <option value="US" >United States</option>
+          <option value="UK" >Ukraine</option>
+        </select>
+      </div>
+      </br>
+
+      <!-- for US-->
+      <div id="div_state">
+        <label> State:</label>
+        <input type="text" id="state" placeholder="type: PA" onchange="showCityA()">
+      </div>
+      </br>
+
+      <!-- for Ukraine -->
+      <div id="div_province">
+        <label> Provence:</label>
+        <select name="province" id="province" onclick="showCityB()"> <!-- had as onchange but wouldnt show up, has error that once selected it wont leave screen-->
+          <option value="LVIV">LVIV</option>
+        </select>
+      </div>
+        </br>
+
+      <!-- for US -->
+        <div id="div_cityA">
+          <label> City:</label>
+          <select name="cityA" id="cityA">
+            <option value="SC">State College</option>
+            <option value="LT">Lewistown</option>
+          </select>
+        </div>
+        </br>
+
+      <!-- for Ukraine -->
+      <div id="div_cityB">
+        <label> City:</label>
+        <select name="cityB" id="cityB">
+          <option value="LVIV">LVIV</option>
+        </select>
+      </div>
+      </br>
+
+    </form>
+  </body>
+
+  <script>
+    function hideInputs()
+    {
+      document.getElementById('div_state').style.display = "none";
+      document.getElementById('div_cityA').style.display = "none";
+      document.getElementById('div_province').style.display = "none";
+      document.getElementById('div_cityB').style.display = "none";
+
+    }
+
+    function showState()
+    {
+      //cant pull div value here must pull the id value of the select, if use div, label, value use innerHTML since its in between the brackets
+      //select is different value gets puts to select, also applies to input text, password, button
+      let x = document.getElementById("country").value;
+
+      if (x == 'US')
+      {
+
+        document.getElementById('div_state').style.display = "block";
+        //added so they dont show up by mistake
+        document.getElementById('div_province').style.display = "none";
+      }
+      else if (x == 'UK')
+      {
+        document.getElementById('div_province').style.display = "block";
+        //added so they dont show up by mistake
+        document.getElementById('div_state').style.display = "none";
+        document.getElementById('div_cityA').style.display = "none";
+      }
+    }
+
+    function showCityA()
+    {
+      let x = document.getElementById("state").value;
+
+      if (x == 'PA')
+      {
+        document.getElementById('div_cityA').style.display = "block";
+      }
+
+    }
+
+    function showCityB()
+    {
+      document.getElementById('div_cityB').style.display = "block";
+      //added so they dont show up by mistake
+      document.getElementById('div_cityA').style.display = "none";
+    }
+
+  </script>
+
+</html>
