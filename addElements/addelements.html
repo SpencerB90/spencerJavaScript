@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="stylesheet" type="text/css" href="addelements.css">
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <ul id ="list">
+      <li id ="element1">Lev</li>
+      <li id ="element2">Roman</li>
+      <li id ="element3">Spencer</li>
+    </ul>
+
+    <div id="div_name">
+      <label> Name:</label>
+      <input type="text" id="name" placeholder="type: name">
+    </div>
+    </br>
+
+<div class="btn" onclick="addLi()">Add Element</div>
+
+  </body>
+
+  <script>
+    function addLi(){
+      let ul = document.getElementById("list");
+      let li = document.createElement("li");
+      let children =ul.children.length + 1;
+      let name = document.getElementById("name").value;
+      
+      li.setAttribute("id", "element"+children);
+      li.appendChild(document.createTextNode(name));
+      ul.appendChild(li);
+    }
+  </script>
+
+</html>
