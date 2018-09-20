@@ -15,7 +15,7 @@
 
     <div id="div_name">
       <label> Name:</label>
-      <input type="text" id="name" placeholder="type: name">
+      <input type="text" id="name" placeholder="I AM BATMAN">
     </div>
     </br>
 
@@ -29,9 +29,20 @@
       let li = document.createElement("li");
       let children =ul.children.length + 1;
       let name = document.getElementById("name").value;
-      
+      document.getElementById("name").value = "";
+
+      //adds id = element 4 to <li>
       li.setAttribute("id", "element"+children);
-      li.appendChild(document.createTextNode(name));
+
+      //add class fake class to li
+      li.className = "fakeClass";
+
+      //this works to add name to <li>
+      //li.appendChild(document.createTextNode(name));
+
+      //other way to do this
+      li.innerHTML = name;
+
       ul.appendChild(li);
     }
   </script>
