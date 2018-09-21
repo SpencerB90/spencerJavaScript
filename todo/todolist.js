@@ -8,17 +8,28 @@ let AddButton = myButtons[0];
 //create an onclick event for the Add button
 AddButton.onclick = function(){addToDoItem()};
 
-
+//create a function to add todo list item
 function addToDoItem()
 {
   //grab ul
   let ul = document.getElementById("incomplete-tasks");
 
-  //create child object
-  var li = document.createElement("li");
+  //create child <li> object
+  let li = document.createElement("li");
+
+  //create child label object
+  let label = document.createElement("label");
+
+  //grab the textbox value and set it as text of <li>
   let newTask = document.getElementById("new-task").value;
 
-  li.innerHTML = newTask;
+  //.innerHTML - translates everything from innerHTML
+  // - innerTEXT can work too, will work with later
+  label.innerHTML = newTask;
+
+  //append child <label> to the <li>
+  li.appendChild(label);
+
   //append child <li> to the <ul>
   ul.appendChild(li);
 
