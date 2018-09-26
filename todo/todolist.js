@@ -17,8 +17,41 @@ function addToDoItem()
   //create child <li> object
   let li = document.createElement("li");
 
+  //create the child <input> for checkbox
+  let input = document.createElement("input");
+
+  //create and set type attribute for <input>
+  input.setAttribute("type","checkbox");
+
   //create child label object
   let label = document.createElement("label");
+
+  //create the child <button> for edit
+  let bInputE = document.createElement("button");
+  //create class ="edit"
+  bInputE.setAttribute("class","edit");
+
+  //another way to set the onclick than the delete button
+  bInputE.onclick = function() {editLi(this)};
+
+  //bInputE.setAttribute("onclick","editLi(this)");
+
+  //creates edit text (innerHTML) for the button
+  bInputE.innerHTML = "Edit";
+
+  //create the child <button> for delete
+  let bInputD = document.createElement("button");
+  //create class ="delete"
+  bInputD.setAttribute("class","delete");
+  //adding event listener to delete button //using this
+  bInputD.setAttribute("onclick", "deleteLi(this)");
+  //creates edit text (innerHTML) for the button
+  bInputD.innerHTML = "Delete";
+
+  //creating child <input> for text
+  let text = document.createElement("input");
+  //create and set type attribute for <input>
+  text.setAttribute("type","text");
 
   //grab the textbox value and set it as text of <li>
   let newTask = document.getElementById("new-task").value;
@@ -27,10 +60,45 @@ function addToDoItem()
   // - innerTEXT can work too, will work with later
   label.innerHTML = newTask;
 
+  //append the child <input> text to <li>
+  li.appendChild(text);
+
+  //append the child <input> checkbox to <li>
+  li.appendChild(input);
+
   //append child <label> to the <li>
   li.appendChild(label);
+
+  //append the child <button> edit to <li>
+  li.appendChild(bInputE);
+
+  //append the child <button> delete to <li>
+  li.appendChild(bInputD);
 
   //append child <li> to the <ul>
   ul.appendChild(li);
 
-}
+ }
+
+//dosent work atm
+  //create li function to delete
+  function deleteLi(item){
+    //grab parent <ul>
+    let ul = document.getElementById("incomplete-tasks");
+
+    //figure out which child <li> li is
+    let inChild = item.parentNode;
+
+    //remove the child
+    ul.removeChild(inChild);
+
+  }
+
+  function editLi(item){
+    //figure out what <li> to change
+    let li = item.parentNode;
+
+    //change the <li> class to "edit"
+    li.setAttribute("class", "edit");
+
+  }
