@@ -19,7 +19,6 @@ function addToDoItem()
 
   //create the child <input> for checkbox
   let input = document.createElement("input");
-
   //create and set type attribute for <input>
   input.setAttribute("type","checkbox");
 
@@ -29,13 +28,10 @@ function addToDoItem()
   //create the child <button> for edit
   let bInputE = document.createElement("button");
   //create class ="edit"
-  bInputE.setAttribute("class","edit");
-
+  bInputE.setAttribute("class","editMode");
   //another way to set the onclick than the delete button
   bInputE.onclick = function() {editLi(this)};
-
   //bInputE.setAttribute("onclick","editLi(this)");
-
   //creates edit text (innerHTML) for the button
   bInputE.innerHTML = "Edit";
 
@@ -60,14 +56,14 @@ function addToDoItem()
   // - innerTEXT can work too, will work with later
   label.innerHTML = newTask;
 
-  //append the child <input> text to <li>
-  li.appendChild(text);
-
   //append the child <input> checkbox to <li>
   li.appendChild(input);
 
   //append child <label> to the <li>
   li.appendChild(label);
+
+  //append the child <input> text to <li>
+  li.appendChild(text);
 
   //append the child <button> edit to <li>
   li.appendChild(bInputE);
@@ -99,6 +95,15 @@ function addToDoItem()
     let li = item.parentNode;
 
     //change the <li> class to "edit"
-    li.setAttribute("class", "edit");
+    li.setAttribute("class", "editMode");
+
+    //get the innerHTML of the label
+    labelText = li.childNodes[1].innerHTML;
+
+    //put the labels text into the value of the textbox
+    let textbox = li.childNodes[2];
+
+  //  textbox.value = labelText;
+     textbox.Attribute("value", labelText);
 
   }
