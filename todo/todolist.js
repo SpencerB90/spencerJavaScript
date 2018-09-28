@@ -13,14 +13,15 @@ function addToDoItem()
 {
   //grab ul
   let ul = document.getElementById("incomplete-tasks");
-
   //create child <li> object
   let li = document.createElement("li");
-
   //create the child <input> for checkbox
   let input = document.createElement("input");
   //create and set type attribute for <input>
   input.setAttribute("type","checkbox");
+
+  //calls function to movechild to completed list li
+  input.onclick = function() {addtoCompeleteLi(this)}
 
   //create child label object
   let label = document.createElement("label");
@@ -74,6 +75,10 @@ function addToDoItem()
   //append child <li> to the <ul>
   ul.appendChild(li);
 
+
+
+
+
  }
 
 //dosent work atm
@@ -105,5 +110,15 @@ function addToDoItem()
 
   //  textbox.value = labelText;
      textbox.Attribute("value", labelText);
+
+  }
+
+  function addtoCompeleteLi(item){
+    //weekend work
+    let ulcompT = document.getElementById("completed-tasks");
+
+    let moveChild = item.parentNode;
+
+    ulcompT.appendChild(moveChild);
 
   }
