@@ -53,6 +53,8 @@ function addToDoItem()
   //grab the textbox value and set it as text of <li>
   let newTask = document.getElementById("new-task").value;
 
+  document.getElementById("new-task").value = "";
+
   //.innerHTML - translates everything from innerHTML
   // - innerTEXT can work too, will work with later
   label.innerHTML = newTask;
@@ -76,22 +78,26 @@ function addToDoItem()
   ul.appendChild(li);
 
 
-
-
-
  }
 
 //dosent work atm
   //create li function to delete
   function deleteLi(item){
     //grab parent <ul>
-    let ul = document.getElementById("incomplete-tasks");
+    //works but not for multiple places in the list
+    // let ul = document.getElementById("incomplete-tasks");
+
+    //child
+    let li = item.parentNode;
+    //parent
+    let ul = li.parentNode;
 
     //figure out which child <li> li is
-    let inChild = item.parentNode;
+    //works but not needed with new code
+    //let inChild = item.parentNode;
 
     //remove the child
-    ul.removeChild(inChild);
+    ul.removeChild(li);
 
   }
 
@@ -108,17 +114,67 @@ function addToDoItem()
     //put the labels text into the value of the textbox
     let textbox = li.childNodes[2];
 
-  //  textbox.value = labelText;
-     textbox.Attribute("value", labelText);
+    //textbox.value = labelText;
+     textbox.setAttribute("value", labelText);
+
+     //change the edit button's text to save
+     item.innerHTML = "Save";
+
+     //change onclick event for save buttons
+     item.onclick = function() {saveli(this)};
 
   }
 
   function addtoCompeleteLi(item){
-    //weekend work
+
+    //get the <ul> of completed tasks
     let ulcompT = document.getElementById("completed-tasks");
 
+    //get the <li> for child
+    let moveChild = item.parentNode;
+
+    //append child to new <l>
+    ulcompT.appendChild(moveChild);
+
+    //set onclick even to set to addtoinconplete li
+    item.onclick = function() {addtoIncompleteCompeleteLi(this)};
+
+  }
+
+  function addtoIncompleteCompeleteLi(item){
+
+    //grab the ul incomplete-tasks
+    let ulcompT = document.getElementById("incomplete-tasks");
+
+    // set variable to li from parent node
     let moveChild = item.parentNode;
 
     ulcompT.appendChild(moveChild);
 
+    //set onclick even to set to asstoinconplete li
+    item.onclick = function() {addtoCompeleteLi(this)};
+
+  }
+
+  function saveli(item){
+    //grab the li from parent
+    let li = item.parentNode;
+
+    //remove editMode class from li
+    li.setAttribute("class", "");
+
+    //get the innerHTML of the label
+    let labelText = li.childNodes[1];
+
+    //get the value of the textbox
+    let textbox = li.childNodes[2].value;
+
+    //labels innerHTML need to be changed to value of textbox
+    labelText.innerHTML = textbox;
+
+    //chaage save button innerHTML to edit
+    item.innerHTML = "Edit";
+
+    //change button to edit again
+    item.onclick = function() {editLi(this)};
   }
