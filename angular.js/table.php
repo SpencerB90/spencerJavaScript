@@ -13,7 +13,7 @@ while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
 	$outp .= '"Last Name":"'. $rs["last_name"] 	. '"';
   $outp .= '"City":"'. $rs["city"] 	. '"}';
 }
-$outp ='{"angular_people":['.$outp.']}';
+$outp ='{"records":['.$outp.']}';
 $conn->close();
 
 echo($outp);
