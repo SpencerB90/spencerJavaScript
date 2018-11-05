@@ -31,7 +31,7 @@ table tr:nth-child(even) {
       <li ng-repeat="x in myData"> {{x.Name}} - {{x.City}}, {{x.Country}}  </li>
     </ul>
 
-<table  >
+<table>
   <thead>
   <tr>
     <th>Name</th>
@@ -48,9 +48,33 @@ table tr:nth-child(even) {
   </tbody>
   </table>
 
+<br />
+
+  <table>
+    <thead>
+    <tr>
+      <th>User ID</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>city</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="x in myDatas ">
+      <td>   {{x.userid}}   </td>
+      <td>   {{x.first_name}}   </td>
+      <td>   {{x.last_name}}   </td>
+      <td>   {{x.city}}  </td>
+    </tr>
+    </tbody>
+    </table>
+
+
+
     </div>
   </body>
 
-  <script src="myApp.js"> </script>
+    <script src="myApp.js"> </script>
   <script src="myCtrl.js"> </script>
+  <script src="myPHP.php"> </script>
 </html>
