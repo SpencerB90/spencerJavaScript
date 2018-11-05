@@ -9,8 +9,8 @@ $result = $conn->query("SELECT userid, first_name, last_name, city FROM angular_
 $outp = "";
 while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
     if ($outp != "") {$outp .= ",";}
-	$outp .= '"First Name":"'   . $rs["first_name"]    	. '",';
-	$outp .= '"Last Name":"'. $rs["last_name"] 	. '"}';
+	$outp .= '{"First Name":"'   . $rs["first_name"]    	. '",';
+	$outp .= '"Last Name":"'. $rs["last_name"] 	. '"';
   $outp .= '"City":"'. $rs["city"] 	. '"}';
 }
 $outp ='{"angular_people":['.$outp.']}';
