@@ -8,7 +8,7 @@ app.controller("myCtrl", function($scope, $http) {
   });
 
   $http.get("table.php").then(function (response) {
-    $scope.myDatas = response.data.records;
+    $scope.myPHPData = response.data.records;
 
     });
 });
