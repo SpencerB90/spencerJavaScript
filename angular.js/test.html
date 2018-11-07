@@ -67,7 +67,15 @@ table tr:nth-child(even) {
     </tbody>
     </table>
 
+    <div ng-app="myApp" ng-controller="myCtrl">
 
+      <p>Select a car:</p>
+
+      <select ng-model="selectedName" ng-options="x.firstName for x in myPHPData">
+      </select>
+
+
+    </div>
 
     </div>
   </body>
