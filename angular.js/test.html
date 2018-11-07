@@ -1,25 +1,30 @@
-<style>
-table, th , td {
-  border: 1px solid grey;
-  border-collapse: collapse;
-  padding: 5px;
-}
-table tr:nth-child(odd) {
-  background-color: #ff00ff;
-}
-table tr:nth-child(even) {
-  background-color: #FFD700;
-}
-</style>
-
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
+
+    <style>
+    table, th , td {
+      border: 1px solid grey;
+      border-collapse: collapse;
+      padding: 5px;
+    }
+    table tr:nth-child(odd) {
+      background-color: #ff00ff;
+    }
+    table tr:nth-child(even) {
+      background-color: #FFD700;
+    }
+    </style>
+
+
     <meta charset="utf-8">
     <title></title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"> </script> <!-- includes angularjs, has to be in head -->
+
   </head>
+
+
   <body>
 
     <div ng-app="myApp" ng-controller="myCtrl">
@@ -31,56 +36,54 @@ table tr:nth-child(even) {
       <li ng-repeat="x in myData"> {{x.Name}} - {{x.City}}, {{x.Country}}  </li>
     </ul>
 
-<table>
-  <thead>
-  <tr>
-    <th>Name</th>
-    <th>City</th>
-    <th>Country</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr ng-repeat="x in myData | orderBy: 'City'">
-    <td>   {{x.Name}}   </td>
-    <td>   {{x.City}}   </td>
-    <td>   {{x.Country}}  </td>
-  </tr>
-  </tbody>
-  </table>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>City</th>
+            <th>Country</th>
+          </tr>
+        </thead>
 
-<br />
+        <tbody>
+          <tr ng-repeat="x in myData | orderBy: 'City'">
+            <td>   {{x.Name}}   </td>
+            <td>   {{x.City}}   </td>
+            <td>   {{x.Country}}  </td>
+          </tr>
+        </tbody>
+      </table>
 
-  <table>
-    <thead>
-    <tr>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>city</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr ng-repeat="x in myPHPData ">
-      <td>   {{x.firstName}}   </td>
-      <td>   {{x.lastName}}   </td>
-      <td>   {{x.city}}  </td>
-    </tr>
-    </tbody>
-    </table>
+      <br />
 
-    <div ng-app="myApp" ng-controller="myCtrl">
+      <table>
+        <thead>
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>city</th>
+          </tr>
+        </thead>
 
-      <p>Select a car:</p>
+        <tbody>
+          <tr ng-repeat="x in myPHPData ">
+            <td>   {{x.firstName}}   </td>
+            <td>   {{x.lastName}}   </td>
+            <td>   {{x.city}}  </td>
+          </tr>
+        </tbody>
+      </table>
 
+      <div ng-app="myApp" ng-controller="myCtrl">
+        <p>Select a car:</p>
       <select ng-model="selectedName" ng-options="x.firstName for x in myPHPData">
       </select>
-
-
-    </div>
+      </div>
 
     </div>
   </body>
 
-    <script src="myApp.js"> </script>
+  <script src="myApp.js"> </script>
   <script src="myCtrl.js"> </script>
 
 </html>
