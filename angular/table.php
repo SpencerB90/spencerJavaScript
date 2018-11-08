@@ -10,8 +10,8 @@ $outp = "";
 while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
     if ($outp != "") {$outp .= ",";}
 	$outp .= '{"firstName":"' . $rs["first_name"] . '",';
-	$outp .= '"lastName":"'. $rs["last_name"] 	. '"';
-  $outp .= '"city":"'. $rs["city"] 	. '"}';
+	$outp .= '"lastName":"' . $rs["last_name"] . '"';
+  $outp .= '"city":"' . $rs["city"] . '"}';
 }
 $outp ='{"records":['.$outp.']}';
 $conn->close();
