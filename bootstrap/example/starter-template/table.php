@@ -4,14 +4,13 @@ header("Content-Type: application/json; charset=UTF-8");
 
 $conn = new mysqli("localhost", "spencer", "southhills#", "spencer");
 
-$result = $conn->query("SELECT first_name, last_name, city FROM angular_people");
+$result = $conn->query("SELECT task, complete FROM toDo");
 
 $outp = "";
 while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
     if ($outp != "") {$outp .= ",";}
-	$outp .= '{"firstName":"' . $rs["first_name"] . '",';
-	$outp .= '"lastName":"' . $rs["last_name"] . '",';
-  $outp .= '"city":"' . $rs["city"] . '"}';
+	$outp .= '{"task":"' . $rs["task"] . '",';
+  $outp .= '"complete":"' . $rs["complete"] . '"}';
 }
 $outp ='{"records":['.$outp.']}';
 $conn->close();
