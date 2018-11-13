@@ -22,7 +22,7 @@
     <h1> TO DO LIST </h1>
 
 
-  <div ng-app="myApp" ng-controller="myCtrl">
+
 
     <main role="main" class="container">
 
@@ -35,11 +35,12 @@
           <div class="card-body">
             <h5 class="card-title">To Do List</h5>
             <p class="card-text">
-
+              <div ng-app="myApp" ng-controller="myCtrl">
                 Name: <input ng-model="x.task">
 
             </p>
             <a href="#" class="btn btn-primary">Add to List</a>
+          </div>
           </div>
         </div>
       </div>
@@ -53,11 +54,11 @@
             <h5 class="card-title">Incompleted</h5>
             <p class="card-text">
               <table>
-
+                <div ng-app="myApp" ng-controller="myCtrl">
                   <tr ng-repeat="x in myPHPData">
                     <td>{{x.task}} <a href="#" class="btn btn-primary">Edit</a> <a href="#" class="btn btn-primary">Delete</a></td>
                   </tr>
-
+                </div>
               </table>
             </p>
 
@@ -72,11 +73,11 @@
             <h5 class="card-title">Completed</h5>
             <p class="card-text">
               <table>
-
+                <div ng-app="myApp" ng-controller="myCtrl">
                   <tr ng-repeat="x in myPHPData">
                     <td>{{x.complete}} <a href="#" class="btn btn-primary">Edit</a> <a href="#" class="btn btn-primary">Delete</a></td>
                   </tr>
-
+                </div>
               </table>
             </p>
 
@@ -84,7 +85,6 @@
         </div>
       </div>
     </div>
-</div>
 
 
 
