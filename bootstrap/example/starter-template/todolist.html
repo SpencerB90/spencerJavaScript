@@ -20,7 +20,7 @@
   <body>
 
 
-
+  <div ng-app="myApp" ng-controller="myCtrl">
 
     <main role="main" class="container">
 
@@ -33,7 +33,9 @@
           <div class="card-body">
             <h5 class="card-title">To Do List</h5>
             <p class="card-text">
-              text here
+
+                Name: <input ng-model="firstname">
+
             </p>
             <a href="#" class="btn btn-primary">Add to List</a>
           </div>
@@ -48,14 +50,28 @@
           <div class="card-body">
             <h5 class="card-title">Incompleted</h5>
             <p class="card-text">
-              text here
+              <table>
+                <thead>
+                  <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>city</th>
+                  </tr>
+                </thead>
+                <!-- -->
+                <tbody>
+                  <tr ng-repeat="x in myPHPData">
+                    <td>{{x.firstName}}</td>
+                    <td>{{x.lastName}}</td>
+                    <td>{{x.city}}</td>
+                  </tr>
+                </tbody>
+              </table>
             </p>
 
           </div>
         </div>
       </div>
-
-
 
         <!-- no header or footer -->
         <div class=" col-md-4">
@@ -63,18 +79,29 @@
           <div class="card-body">
             <h5 class="card-title">Completed</h5>
             <p class="card-text">
-              text here
+              <table>
+                <thead>
+                  <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>city</th>
+                  </tr>
+                </thead>
+                <!-- -->
+                <tbody>
+                  <tr ng-repeat="x in myPHPData">
+                    <td>{{x.firstName}}</td>
+                    <td>{{x.lastName}}</td>
+                    <td>{{x.city}}</td>
+                  </tr>
+                </tbody>
+              </table>
             </p>
 
           </div>
         </div>
       </div>
-
-
-
-<!-- secod row -->
-
-
+    </div>
 </div>
 
 
@@ -84,6 +111,11 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
+
+    <script src="myApp.js"> </script>
+    <script src="myCtrl.js"> </script>
+
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
     <script src="../../assets/js/vendor/popper.min.js"></script>
