@@ -4,4 +4,7 @@ app.controller("myCtrl", function($scope, $http) {
     $scope.myPHPData = response.data.records;
 
     });
+    $scope.removeItem = function (x) {
+        $scope.products.splice(x, 1);
+    } 
 });
