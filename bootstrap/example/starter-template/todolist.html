@@ -54,7 +54,7 @@
               <table>
                 <div ng-app="myApp" ng-controller="myCtrl">
                   <tr ng-repeat="x in myPHPData">
-                    <td>{{x.task}} <a href="#" class="btn btn-primary">Edit</a> {{x}} <span ng-click="removeItem($index)">&times;</span></td>
+                    <td>{{x.task}} <a href="#" class="btn btn-primary">Edit</a> <a href="#" class="btn btn-primary">Delete</a></td>
                   </tr>
                 </div>
               </table>
@@ -73,7 +73,7 @@
               <table>
                 <div ng-app="myApp" ng-controller="myCtrl">
                   <tr ng-repeat="x in myPHPData">
-                    <td>{{x.complete}} <a href="#" class="btn btn-primary">Edit</a>{{x}} <span ng-click="removeItem($index)">&times;</span></td>
+                    <td>{{x.complete}} <a href="#" class="btn btn-primary">Edit</a> <a href="#" class="btn btn-primary">Delete</a></td>
                   </tr>
                 </div>
               </table>
