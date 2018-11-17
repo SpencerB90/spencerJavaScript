@@ -34,10 +34,9 @@
             <h5 class="card-title">To Do List</h5>
             <p class="card-text">
               <div ng-app="myApp" ng-controller="myCtrl">
-                Name: <input ng-model="x in myPHPData">
-
+                <input type='text' id='txt_uname' ng-model='uname'>
             </p>
-            <a href="#" class="btn btn-primary">Add to List</a>
+            <input type='button' id='but_save' value='Save' ng-click="add()" >
           </div>
           </div>
         </div>
@@ -54,7 +53,7 @@
               <table>
                 <div ng-app="myApp" ng-controller="myCtrl">
                   <tr ng-repeat="x in myPHPData">
-                    <td>{{x.task}} <a href="#" class="btn btn-primary">Edit</a> <a href="#" class="btn btn-primary">Delete</a></td>
+                    <td><input type='button' id='but_save' value='Save' ng-click="add()" > {{x.task}} <a href="#" class="btn btn-primary">Edit</a> <a href="#" <input type='button' ng-click='remove($index,task.id);' value='Delete'></td>
                   </tr>
                 </div>
               </table>
@@ -73,7 +72,7 @@
               <table>
                 <div ng-app="myApp" ng-controller="myCtrl">
                   <tr ng-repeat="x in myPHPData">
-                    <td>{{x.complete}} <a href="#" class="btn btn-primary">Edit</a> <a href="#" class="btn btn-primary">Delete</a></td>
+                    <td><input type='button' id='but_save' value='Save' ng-click="add()" > {{x.complete}} <a href="#" class="btn btn-primary">Edit</a> <input type='button' ng-click='remove($index,task.id);' value='Delete'></td>
                   </tr>
                 </div>
               </table>
@@ -103,3 +102,108 @@
     <script src="../../dist/js/bootstrap.min.js"></script>
   </body>
 </html>
+
+
+
+
+
+
+
+<div ng-app='myapp' ng-controller="userCtrl">
+ <!-- New entry -->
+ <table>
+  <tr>
+   <td>First Name</td>
+   <td><input type='text' id='txt_fname' ng-model='fname'></td>
+  </tr>
+  <tr>
+   <td>Last Name</td>
+   <td><input type='text' id='txt_lname' ng-model='lname'></td>
+  </tr>
+  <tr>
+   <td>Username</td>
+   <td><input type='text' id='txt_uname' ng-model='uname'></td>
+  </tr>
+  <tr>
+   <td>&nbsp;</td>
+   <td><input type='button' id='but_save' value='Save' ng-click="add()" ></td>
+  </tr>
+ </table>
+
+ <!-- User list -->
+ <table border="1">
+  <tr>
+   <th>First name</th>
+   <th>Last name</th>
+   <th>Username</th>
+   <th>&nbsp;</th>
+  </tr>
+
+  <tr ng-repeat="user in users">
+   <td>{{user.fname}}</td>
+   <td>{{user.lname}}</td>
+   <td>{{user.username}}</td>
+   <td><input type='button' ng-click='remove($index,user.id);' value='Delete'></td>
+  </tr>
+
+ </table>
+</div>
+
+
+
+<script>
+var fetch = angular.module('myapp', []);
+
+fetch.controller('userCtrl', ['$scope', '$http', function ($scope, $http) {
+
+ // Get all records
+ $http({
+  method: 'post',
+  url: 'addremove.php',
+  data: {request_type:1},
+
+ }).then(function successCallback(response) {
+  $scope.users = response.data;
+ });
+
+ // Add new record
+ $scope.add = function(){
+  $http({
+   method: 'post',
+   url: 'addremove.php',
+   data: {task:$scope.task,request_type:2},
+  }).then(function successCallback(response) {
+   $scope.items.push(response.data[0]);
+  });
+ }
+
+ // Remove record
+ $scope.remove = function(index,task_id){
+
+  $http({
+   method: 'post',
+   url: 'addremove.php',
+   data: {item_id:item_id,request_type:3},
+  }).then(function successCallback(response) {
+   $scope.items.splice(index, 1);
+  });
+ }
+
+
+ //for completed list
+ // Add new record
+ $scope.add = function(){
+  $http({
+   method: 'post',
+   url: 'addremove.php',
+   data: {task:$scope.task,request_type:4},
+  }).then(function successCallback(response) {
+   $scope.complete.push(response.data[0]);
+  });
+ }
+
+
+
+}]);
+
+</script>
