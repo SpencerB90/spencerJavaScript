@@ -15,6 +15,8 @@
     <!-- Custom styles for this template -->
     <link href="starter-template.css" rel="stylesheet">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script> <!-- includes angularjs, has to be in head -->
+
   </head>
 
   <body>
@@ -43,7 +45,6 @@
       </div>
 
 
-
         <!-- no header or footer -->
         <div class=" col-md-4">
             <div class="card">
@@ -52,8 +53,8 @@
             <p class="card-text">
               <table>
                 <div ng-app="myApp" ng-controller="myCtrl">
-                  <tr ng-repeat="x in myPHPData">
-                    <td><input type='button' id='but_save' value='Save' ng-click="add()" > {{x.task}} <a href="#" class="btn btn-primary">Edit</a> <a href="#" <input type='button' ng-click='remove($index,task.id);' value='Delete'></td>
+                  <tr ng-repeat="x in toDo">
+                    <td><input type='button' id='but_save' value='Save' ng-click="addC()" > <a href="#" editable-text="x.task" e-label="Task">{{ x.task || 'empty' }}</a> <input type='button' ng-click='remove($index,task.toDo_id);' value='Delete'></td>
                   </tr>
                 </div>
               </table>
@@ -63,6 +64,8 @@
         </div>
       </div>
 
+
+
         <!-- no header or footer -->
         <div class=" col-md-4">
             <div class="card">
@@ -71,8 +74,8 @@
             <p class="card-text">
               <table>
                 <div ng-app="myApp" ng-controller="myCtrl">
-                  <tr ng-repeat="x in myPHPData">
-                    <td><input type='button' id='but_save' value='Save' ng-click="add()" > {{x.complete}} <a href="#" class="btn btn-primary">Edit</a> <input type='button' ng-click='remove($index,task.id);' value='Delete'></td>
+                  <tr ng-repeat="x in toDo">
+                    <td><input type='button' id='but_save' value='Save' ng-click="addI()" > <a href="#" editable-text="x.complete" e-label="Task">{{ x.complete || 'empty' }}</a> <input type='button' ng-click='remove($index,task.toDo_id);' value='Delete'></td>
                   </tr>
                 </div>
               </table>
@@ -105,52 +108,6 @@
 
 
 
-
-
-
-
-<div ng-app='myapp' ng-controller="userCtrl">
- <!-- New entry -->
- <table>
-  <tr>
-   <td>First Name</td>
-   <td><input type='text' id='txt_fname' ng-model='fname'></td>
-  </tr>
-  <tr>
-   <td>Last Name</td>
-   <td><input type='text' id='txt_lname' ng-model='lname'></td>
-  </tr>
-  <tr>
-   <td>Username</td>
-   <td><input type='text' id='txt_uname' ng-model='uname'></td>
-  </tr>
-  <tr>
-   <td>&nbsp;</td>
-   <td><input type='button' id='but_save' value='Save' ng-click="add()" ></td>
-  </tr>
- </table>
-
- <!-- User list -->
- <table border="1">
-  <tr>
-   <th>First name</th>
-   <th>Last name</th>
-   <th>Username</th>
-   <th>&nbsp;</th>
-  </tr>
-
-  <tr ng-repeat="user in users">
-   <td>{{user.fname}}</td>
-   <td>{{user.lname}}</td>
-   <td>{{user.username}}</td>
-   <td><input type='button' ng-click='remove($index,user.id);' value='Delete'></td>
-  </tr>
-
- </table>
-</div>
-
-
-
 <script>
 var fetch = angular.module('myapp', []);
 
@@ -163,7 +120,7 @@ fetch.controller('userCtrl', ['$scope', '$http', function ($scope, $http) {
   data: {request_type:1},
 
  }).then(function successCallback(response) {
-  $scope.users = response.data;
+  $scope.items = response.data;
  });
 
  // Add new record
@@ -178,7 +135,7 @@ fetch.controller('userCtrl', ['$scope', '$http', function ($scope, $http) {
  }
 
  // Remove record
- $scope.remove = function(index,task_id){
+ $scope.remove = function(index,toDo_id){
 
   $http({
    method: 'post',
@@ -192,16 +149,27 @@ fetch.controller('userCtrl', ['$scope', '$http', function ($scope, $http) {
 
  //for completed list
  // Add new record
- $scope.add = function(){
+ $scope.addC = function(){
   $http({
    method: 'post',
    url: 'addremove.php',
    data: {task:$scope.task,request_type:4},
   }).then(function successCallback(response) {
-   $scope.complete.push(response.data[0]);
+   $scope.items.push(response.data[0]);
   });
  }
 
+ //for completed list
+ // Add new record
+ $scope.addI = function(){
+  $http({
+   method: 'post',
+   url: 'addremove.php',
+   data: {task:$scope.task,request_type:5},
+  }).then(function successCallback(response) {
+   $scope.items.push(response.data[0]);
+  });
+ }
 
 
 }]);

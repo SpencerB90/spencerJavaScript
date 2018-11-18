@@ -1,7 +1,7 @@
 
 <?php
 
-include 'config.php';
+include 'table.php';
 
 $data = json_decode(file_get_contents("php://input"));
 
@@ -33,19 +33,30 @@ if($request_type == 2){
 if($request_type == 3){
  $toDo_id = $data->toDo_id;
 
- mysqli_query($con,"delete from toDo where id=".$toDo_id);
+ mysqli_query($con,"delete from toDo where toDo_id=".$toDo_id);
  echo 1;
 }
 
 
-// Insert completed
+// Insert into completed
 if($request_type == 4){
  $completed = $data->completed;
 
- mysqli_query($con,"insert into toDo(task) values('".$completed."')");
+ mysqli_query($con,"update toDo set (complete) = (task), remove (task)");
  $lastinsert_id = mysqli_insert_id($con);
 
  $return_arr[] = array("id"=>$lastinsert_id,"completed"=>$completed);
+ echo json_encode($return_arr);
+}
+
+// Insert completed
+if($request_type == 5){
+ $completed = $data->completed;
+
+ mysqli_query($con,"update toDo (task) = (complete), remove (complete)");
+ $lastinsert_id = mysqli_insert_id($con);
+
+ $return_arr[] = array("id"=>$lastinsert_id,"task"=>$task);
  echo json_encode($return_arr);
 }
 
