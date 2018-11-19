@@ -74,7 +74,7 @@
             <p class="card-text">
               <table>
                 <div ng-app="myApp" ng-controller="myCtrl">
-                  <tr ng-repeat="x in toDo">
+                  <tr ng-repeat="x in items">
                     <td><input type='button' id='but_save' value='Save' ng-click="addI()" > <a href="#" editable-text="x.complete" e-label="Task">{{ x.complete || 'empty' }}</a> <input type='button' ng-click='remove($index,task.toDo_id);' value='Delete'></td>
                   </tr>
                 </div>
