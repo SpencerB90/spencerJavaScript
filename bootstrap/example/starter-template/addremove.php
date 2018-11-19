@@ -4,10 +4,10 @@
 include('table.php');
 
 
-$_POST = json_decode(file_get_contents("php://input"), true);
+$_POST = json_decode(file_get_contents('php://input'), true);
 
 $request_type = $_POST['request_type'];
-
+echo "hello";
 
 // Get all records
 if($request_type == 1){
