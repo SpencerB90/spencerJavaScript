@@ -54,7 +54,7 @@
               <table>
                 <div ng-app="myApp" ng-controller="myCtrl">
                   <tr ng-repeat="x in items">
-                    <td><input type='button' id='but_save' value='Save' ng-click="addC()" > {{ x.task }} <input type='button' ng-click='remove($index,task.toDo_id);' value='Delete'></td>
+                    <td><input type='button' id='but_save' value='Add Complete' ng-click="addC()" > {{ x.task }} <input type='button' ng-click='remove($index,task.toDo_id);' value='Delete'></td>
                   </tr>
                 </div>
               </table>
@@ -75,7 +75,7 @@
               <table>
                 <div ng-app="myApp" ng-controller="myCtrl">
                   <tr ng-repeat="x in items">
-                    <td><input type='button' id='but_save' value='Save' ng-click="addI()" > {{ x.complete }} </a> <input type='button' ng-click='remove($index,task.toDo_id);' value='Delete'></td>
+                    <td><input type='button' id='but_save' value='Add Incomplete' ng-click="addI()" > {{ x.complete }} </a> <input type='button' ng-click='remove($index,task.toDo_id);' value='Delete'></td>
                   </tr>
                 </div>
               </table>
