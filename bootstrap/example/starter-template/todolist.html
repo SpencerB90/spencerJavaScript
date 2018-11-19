@@ -74,6 +74,8 @@
             <p class="card-text">
               <table>
                 <div ng-app="myApp" ng-controller="myCtrl">
+
+                  <a href="#" editable-text="user.name">{{ user.name || 'empty' }}</a>
                   <tr ng-repeat="x in items">
                     <td><input type='button' id='but_save' value='Save' ng-click="addI()" > <a href="#" editable-text="x.complete" e-label="Task">{{ x.complete || 'empty' }}</a> <input type='button' ng-click='remove($index,task.toDo_id);' value='Delete'></td>
                   </tr>
@@ -112,6 +114,10 @@
 var fetch = angular.module('myapp', []);
 
 fetch.controller('myCtrl', ['$scope', '$http', function ($scope, $http) {
+
+  $scope.user = {
+   name: 'awesome user'
+ };
 
  // Get all records
  $http({
