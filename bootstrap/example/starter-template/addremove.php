@@ -2,11 +2,12 @@
 <?php
 
 include('table.php');
-echo "hello";
+
 
 $data = json_decode(file_get_contents("php://input"));
 
 $request_type = $data->request_type;
+
 
 // Get all records
 if($request_type == 1){
