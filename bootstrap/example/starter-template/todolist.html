@@ -53,8 +53,8 @@
             <p class="card-text">
               <table>
                 <div ng-app="myApp" ng-controller="myCtrl">
-                  <tr ng-repeat="x in toDo">
-                    <td><input type='button' id='but_save' value='Save' ng-click="addC()" > <a href="#" editable-text="x.task" e-label="Task">{{ x.task || 'empty' }}</a> <input type='button' ng-click='remove($index,task.toDo_id);' value='Delete'></td>
+                  <tr ng-repeat="x in items">
+                    <td><input type='button' id='but_save' value='Save' ng-click="addC()" > {{ x.task }} <input type='button' ng-click='remove($index,task.toDo_id);' value='Delete'></td>
                   </tr>
                 </div>
               </table>
@@ -74,10 +74,8 @@
             <p class="card-text">
               <table>
                 <div ng-app="myApp" ng-controller="myCtrl">
-
-                  <a href="#" editable-text="user.name">{{ user.name || 'empty' }}</a>
                   <tr ng-repeat="x in items">
-                    <td><input type='button' id='but_save' value='Save' ng-click="addI()" > <a href="#" editable-text="x.complete" e-label="Task">{{ x.complete || 'empty' }}</a> <input type='button' ng-click='remove($index,task.toDo_id);' value='Delete'></td>
+                    <td><input type='button' id='but_save' value='Save' ng-click="addI()" > {{ x.complete }} </a> <input type='button' ng-click='remove($index,task.toDo_id);' value='Delete'></td>
                   </tr>
                 </div>
               </table>
@@ -114,10 +112,6 @@
 var fetch = angular.module('myapp', []);
 
 fetch.controller('myCtrl', ['$scope', '$http', function ($scope, $http) {
-
-  $scope.user = {
-   name: 'awesome user'
- };
 
  // Get all records
  $http({
