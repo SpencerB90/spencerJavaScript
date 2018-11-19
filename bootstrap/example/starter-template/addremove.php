@@ -11,7 +11,7 @@ $request_type = $data->request_type;
 
 // Get all records
 if($request_type == 1){
- $sel = mysqli_query($con,"SELECT toDo_id, task, complete FROM toDo");
+ $sel = mysqli_query($conn,"SELECT toDo_id, task, complete FROM toDo");
  $data = array();
 
  while ($row = mysqli_fetch_array($sel)) {
@@ -24,7 +24,7 @@ if($request_type == 1){
 if($request_type == 2){
  $task = $data->task;
 
- mysqli_query($con,"insert into toDo(task) values('".$task."')");
+ mysqli_query($conn,"insert into toDo(task) values('".$task."')");
  $lastinsert_id = mysqli_insert_id($con);
 
  $return_arr[] = array("id"=>$lastinsert_id,"task"=>$task);
@@ -35,7 +35,7 @@ if($request_type == 2){
 if($request_type == 3){
  $toDo_id = $data->toDo_id;
 
- mysqli_query($con,"delete from toDo where toDo_id=".$toDo_id);
+ mysqli_query($conn,"delete from toDo where toDo_id=".$toDo_id);
  echo 1;
 }
 
@@ -44,7 +44,7 @@ if($request_type == 3){
 if($request_type == 4){
  $completed = $data->completed;
 
- mysqli_query($con,"update toDo set (complete) = (task), remove (task)");
+ mysqli_query($conn,"update toDo set (complete) = (task), remove (task)");
  $lastinsert_id = mysqli_insert_id($con);
 
  $return_arr[] = array("id"=>$lastinsert_id,"completed"=>$completed);
@@ -55,7 +55,7 @@ if($request_type == 4){
 if($request_type == 5){
  $completed = $data->completed;
 
- mysqli_query($con,"update toDo (task) = (complete), remove (complete)");
+ mysqli_query($conn,"update toDo (task) = (complete), remove (complete)");
  $lastinsert_id = mysqli_insert_id($con);
 
  $return_arr[] = array("id"=>$lastinsert_id,"task"=>$task);
