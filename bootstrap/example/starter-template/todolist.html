@@ -128,7 +128,7 @@ fetch.controller('myCtrl', ['$scope', '$http', function ($scope, $http) {
   $http({
    method: 'post',
    url: 'addremove.php',
-   data: {task:$scope.task,request_type:2},
+   data: {task:$scope.item,request_type:2},
   }).then(function successCallback(response) {
    $scope.items.push(response.data[0]);
   });
