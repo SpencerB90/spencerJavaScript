@@ -1,7 +1,7 @@
 
 <?php
 
-include 'table.php';
+include('table.php');
 
 $data = json_decode(file_get_contents("php://input"));
 
