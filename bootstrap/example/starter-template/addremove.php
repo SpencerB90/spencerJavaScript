@@ -9,11 +9,11 @@ $request_type = $data->request_type;
 
 // Get all records
 if($request_type == 1){
- $sel = mysqli_query($con,"SELECT task FROM toDo");
+ $sel = mysqli_query($con,"SELECT toDo_id, task, complete FROM toDo");
  $data = array();
 
  while ($row = mysqli_fetch_array($sel)) {
-  $data[] = array("id"=>$row['id'],"task"=>$row['task'],"complete"=>$row['complete']);
+  $data[] = array("id"=>$row['toDo_id'],"task"=>$row['task'],"complete"=>$row['complete']);
  }
  echo json_encode($data);
 }
