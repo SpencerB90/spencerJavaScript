@@ -38,7 +38,7 @@
               <div ng-app="myApp" ng-controller="myCtrl">
                 <input type='text' id='txt' ng-model='item'>
             </p>
-            <input type='button' id='but_save' value='Save' ng-click="add()" >
+            <input type='button' id='but_save' value='Save' ng-click="add(item)" >
           </div>
           </div>
         </div>
@@ -124,11 +124,11 @@ fetch.controller('myCtrl', ['$scope', '$http', function ($scope, $http) {
  });
 
  // Add new record
- $scope.add = function(){
+ $scope.add = function(item){
   $http({
    method: 'post',
    url: 'addremove.php',
-   data: {task:$scope.item,request_type:2},
+   data: {task:item,request_type:2},
   }).then(function successCallback(response) {
    $scope.items.push(response.data[0]);
   });
