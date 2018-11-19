@@ -4,9 +4,9 @@
 include('table.php');
 
 
-$data = json_decode(file_get_contents("php://input"));
+$_POST = json_decode(file_get_contents("php://input"), true);
 
-$request_type = $data->request_type;
+$request_type = $_POST['request_type'];
 
 
 // Get all records
@@ -22,20 +22,20 @@ if($request_type == 1){
 
 // Insert task
 if($request_type == 2){
- $task = $data->task;
+ $task = $_POST['task'];
 
  mysqli_query($conn,"insert into toDo (task) values ('$task')");
  $lastinsert_id = mysqli_insert_id($conn);
 
- $return_arr[] = array("id"=>$lastinsert_id,"task"=>$task);
- echo json_encode($return_arr);
+ //$return_arr[] = array("id"=>$lastinsert_id,"task"=>$task);
+// echo json_encode($return_arr);
 }
 
 // Delete record
 if($request_type == 3){
  $toDo_id = $data->toDo_id;
 
- mysqli_query($conn,"delete from toDo where toDo_id=".$toDo_id);
+ mysqli_query($conn,"delete from toDo where toDo_id = ('$toDo_id')");
  echo 1;
 }
 
