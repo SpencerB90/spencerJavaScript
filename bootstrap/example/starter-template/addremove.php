@@ -55,7 +55,18 @@ if($request_type == 4){
 if($request_type == 5){
  $toDo_id = $_POST['toDo_id'];
 
- mysqli_query($conn,"update toDo where toDo_id = ('$toDo_id') set (task) = (complete), remove (complete)");
+ mysqli_query($conn,"update toDo where toDo_id = ('$toDo_id') set (task)  ");
+ // $lastinsert_id = mysqli_insert_id($conn);
+ //
+ // $return_arr[] = array("id"=>$lastinsert_id,"task"=>$task);
+ // echo json_encode($return_arr);
+}
+
+// Insert completed
+if($request_type == 6){
+ $toDo_id = $_POST['toDo_id'];
+
+ mysqli_query($conn,"update toDo where toDo_id = ('$toDo_id') set (complete) ");
  // $lastinsert_id = mysqli_insert_id($conn);
  //
  // $return_arr[] = array("id"=>$lastinsert_id,"task"=>$task);
