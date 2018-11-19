@@ -25,7 +25,7 @@ if($request_type == 2){
  $task = $_POST['task'];
 
  mysqli_query($conn,"insert into toDo (task) values ('$task')");
- $lastinsert_id = mysqli_insert_id($conn);
+ //$lastinsert_id = mysqli_insert_id($conn);
 
  //$return_arr[] = array("id"=>$lastinsert_id,"task"=>$task);
 // echo json_encode($return_arr);
