@@ -24,8 +24,8 @@ if($request_type == 1){
 if($request_type == 2){
  $task = $data->task;
 
- mysqli_query($conn,"insert into toDo(task) values('".$task."')");
- $lastinsert_id = mysqli_insert_id($con);
+ mysqli_query($conn,"insert into toDo (task) values ('$task')");
+ $lastinsert_id = mysqli_insert_id($conn);
 
  $return_arr[] = array("id"=>$lastinsert_id,"task"=>$task);
  echo json_encode($return_arr);
@@ -45,7 +45,7 @@ if($request_type == 4){
  $completed = $data->completed;
 
  mysqli_query($conn,"update toDo set (complete) = (task), remove (task)");
- $lastinsert_id = mysqli_insert_id($con);
+ $lastinsert_id = mysqli_insert_id($conn);
 
  $return_arr[] = array("id"=>$lastinsert_id,"completed"=>$completed);
  echo json_encode($return_arr);
@@ -56,7 +56,7 @@ if($request_type == 5){
  $completed = $data->completed;
 
  mysqli_query($conn,"update toDo (task) = (complete), remove (complete)");
- $lastinsert_id = mysqli_insert_id($con);
+ $lastinsert_id = mysqli_insert_id($conn);
 
  $return_arr[] = array("id"=>$lastinsert_id,"task"=>$task);
  echo json_encode($return_arr);
