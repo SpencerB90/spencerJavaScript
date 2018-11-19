@@ -56,14 +56,14 @@
                   <tr ng-repeat="x in items">
                     <td><input type='button' id='but_save' value='Add Complete' ng-click="addC($index,task.item.id)" > {{ x.task }}
 
-                      <div  class="col-sm-12 col-md-4 col-lg-3 col-xl-2">
+
                          <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="right" data-content="Edit">
                            <div class="form-group">
                              <input type="email" class="form-control" ng-model="x.task" value="{{x.task}}">
                            </div>
                       </button>
 
-                      </div>
+
 
                       <input type='button' ng-click='remove($index,task.item.id);' value='Delete'></td>
                   </tr>
@@ -88,14 +88,14 @@
                   <tr ng-repeat="x in items">
                     <td><input type='button' id='but_save' value='Add Incomplete' ng-click="addI($index,task.item.id)" > {{ x.complete }}
 
-                      <div  class="col-sm-12 col-md-4 col-lg-3 col-xl-2">
+
                         <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="right" data-content="Edit">
                           <div class="form-group">
                             <input type="email" class="form-control" ng-model="x.complete" value="{{x.complete}}">
                           </div>
                       </button>
 
-                      </div>
+                      
 
                      </a> <input type='button' ng-click='remove($index,task.item.id);' value='Delete'>
 
