@@ -57,11 +57,29 @@
                     <td><input type='button' id='but_save' value='Add Complete' ng-click="addC($index,task.item.id)" > {{ x.task }}
 
 
-                         <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="right" data-content="Edit">
-                           <div class="form-group">
-                             <input type="email" class="form-control" ng-model="x.task" value="{{x.task}}">
-                           </div>
-                      </button>
+                      <!-- Trigger the modal with a button -->
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Edit</button>
+
+  <!-- Modal -->
+  <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Edit data</h4>
+        </div>
+        <div class="modal-body">
+          <p>Some text in the modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>   
 
 
 
@@ -89,13 +107,31 @@
                     <td><input type='button' id='but_save' value='Add Incomplete' ng-click="addI($index,task.item.id)" > {{ x.complete }}
 
 
-                        <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="right" data-content="Edit">
-                          <div class="form-group">
-                            <input type="email" class="form-control" ng-model="x.complete" value="{{x.complete}}">
-                          </div>
-                      </button>
+                      <!-- Trigger the modal with a button -->
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Edit</button>
 
-                      
+  <!-- Modal -->
+  <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Edit data</h4>
+        </div>
+        <div class="modal-body">
+          <p>Some text in the modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
 
                      </a> <input type='button' ng-click='remove($index,task.item.id);' value='Delete'>
 
@@ -128,12 +164,6 @@
   </body>
 </html>
 
-<script>
-$(function () {
-$('[data-toggle="popover"]').popover()
-})
-
-</script>
 
 <script>
 let app = angular.module("myApp", []);
