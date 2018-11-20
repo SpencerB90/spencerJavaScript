@@ -174,18 +174,18 @@ let app = angular.module("myApp", []);
 app.controller('itemCtrl', ['$scope', '$http', function ($scope, $http) {
 
  // Get all records
- $http({
-  method: 'post',
-  url: 'addremove.php',
-  data: {request_type:1},
-
- }).then(function successCallback(response) {
-  $scope.items = response.data;
- });
- // $http.get("addremove.php")
- //    .then(function(response) {
- //        $scope.items = response.data;
- //    });
+ // $http({
+ //  method: 'post',
+ //  url: 'addremove.php',
+ //  data: {request_type:1},
+ //
+ // }).then(function successCallback(response) {
+ //  $scope.items = response.data;
+ // });
+ $http.get("addremove.php")
+    .then(function(response) {
+        $scope.items = response.data;
+    });
 
 
  // Add new record
@@ -195,7 +195,7 @@ app.controller('itemCtrl', ['$scope', '$http', function ($scope, $http) {
    url: 'addremove.php',
    data: {task:item,request_type:2},
   }).then(function successCallback(response) {
-  $scope.items = response.data;
+   $scope.items.push(response.data[0]);
 
   });
  }
