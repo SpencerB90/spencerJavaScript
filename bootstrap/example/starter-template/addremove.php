@@ -36,7 +36,7 @@ if($request_type == 3){
  $id = $_POST['id'];
 
  mysqli_query($conn,"delete from toDo where id = ('$id')");
- echo 1;
+ //echo 1;
 }
 
 
