@@ -17,7 +17,7 @@ $request_type = $_POST['request_type'];
  while ($row = mysqli_fetch_array($sel)) {
   $data[] = array("id"=>$row['id'],"task"=>$row['task'],"complete"=>$row['complete']);
  }
- echo json_encode($data);
+
 //}
 
 // Insert task
@@ -29,6 +29,10 @@ if($request_type == 2){
 
  //$return_arr[] = array("id"=>$lastinsert_id,"task"=>$task);
 // echo json_encode($return_arr);
+
+while ($row = mysqli_fetch_array($sel)) {
+ $data[] = array("id"=>$row['id'],"task"=>$row['task'],"complete"=>$row['complete']);
+}
 }
 
 // Delete record
@@ -74,6 +78,8 @@ if($request_type == 6){
  // $return_arr[] = array("id"=>$lastinsert_id,"task"=>$task);
  // echo json_encode($return_arr);
 }
+
+ echo json_encode($data);
 
 
 ?>
