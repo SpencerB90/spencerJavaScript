@@ -194,7 +194,10 @@ app.controller('itemCtrl', ['$scope', '$http', function ($scope, $http) {
    method: 'post',
    url: 'addremove.php',
    data: {task:item,request_type:2},
- });
+  }).then(function successCallback(response) {
+   $scope.items.push(response.data[0]);
+
+  });
  }
 
  // Remove record
