@@ -15,7 +15,7 @@ if($request_type == 1){
  $data = array();
 
  while ($row = mysqli_fetch_array($sel)) {
-  $data[] = array("toDo_id"=>$row['toDo_id'],"task"=>$row['task'],"complete"=>$row['complete']);
+  $data[] = array("id"=>$row['toDo_id'],"task"=>$row['task'],"complete"=>$row['complete']);
  }
  echo json_encode($data);
 }
