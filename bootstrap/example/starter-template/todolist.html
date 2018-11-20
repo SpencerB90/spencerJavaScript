@@ -212,9 +212,7 @@ app.controller('itemCtrl', ['$scope', '$http', function ($scope, $http) {
   });
  }
 
-
- //for completed list
- // Add new record
+ // Add to completed
  $scope.addC = function(index,itemid){
   $http({
    method: 'post',
@@ -225,8 +223,7 @@ app.controller('itemCtrl', ['$scope', '$http', function ($scope, $http) {
   });
  }
 
- //for completed list
- // Add new record
+ //add to incomplete
  $scope.addI = function(index,itemid){
   $http({
    method: 'post',
@@ -237,6 +234,7 @@ app.controller('itemCtrl', ['$scope', '$http', function ($scope, $http) {
   });
  }
 
+//update task
  $scope.updateT = function(index,itemid){
   $http({
    method: 'post',
@@ -247,6 +245,8 @@ app.controller('itemCtrl', ['$scope', '$http', function ($scope, $http) {
   });
  }
 
+
+//update complete
  $scope.updateC = function(index,itemid){
   $http({
    method: 'post',

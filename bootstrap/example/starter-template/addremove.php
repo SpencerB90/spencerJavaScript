@@ -52,7 +52,7 @@ if($request_type == 3){
 if($request_type == 4){
  $id = $_POST['id'];
 
- mysqli_query($conn,"update toDo where id = ('$id') set (complete) = (task), remove (task)");
+ mysqli_query($conn,"update toDo where id = ('$id') set (complete) = (task)");
  // $lastinsert_id = mysqli_insert_id($conn);
  //
  // $return_arr[] = array("id"=>$lastinsert_id,"completed"=>$completed);
@@ -63,10 +63,25 @@ if($request_type == 4){
  }
 }
 
-// Insert completed
+// Insert incomplete
 if($request_type == 5){
  $id = $_POST['id'];
- $task = $_POST['task'];
+
+ mysqli_query($conn,"update toDo where id = ('$id') set (task) = (complete) ");
+ // $lastinsert_id = mysqli_insert_id($conn);
+ //
+ // $return_arr[] = array("id"=>$lastinsert_id,"task"=>$task);
+ // echo json_encode($return_arr);
+
+ while ($row = mysqli_fetch_array($sel)) {
+  $data[] = array("id"=>$row['id'],"task"=>$row['task'],"complete"=>$row['complete']);
+ }
+}
+
+// updating incomplete
+if($request_type == 6){
+ $id = $_POST['id'];
+ $complete = $_POST['task'];
 
  mysqli_query($conn,"update toDo where id = ('$id') set (task) = ('$task') ");
  // $lastinsert_id = mysqli_insert_id($conn);
@@ -79,8 +94,8 @@ if($request_type == 5){
  }
 }
 
-// Insert completed
-if($request_type == 6){
+//updating complete
+if($request_type == 7){
  $id = $_POST['id'];
  $complete = $_POST['complete'];
 
