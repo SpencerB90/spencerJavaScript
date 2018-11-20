@@ -157,7 +157,7 @@ let app = angular.module("myApp", []);
 
 app.controller('itemCtrl', ['$scope', '$http', function ($scope, $http) {
 
- $http.get("addremove.php")
+ $http.get("todo.php")
     .then(function(response) {
         $scope.items = response.data;
     });
@@ -166,8 +166,8 @@ app.controller('itemCtrl', ['$scope', '$http', function ($scope, $http) {
  $scope.add = function(item){
   $http({
    method: 'post',
-   url: 'addremove.php',
-   data: {task:item,request_type:2},
+   url: 'add.php',
+   data: {task:item},
   }).then(function successCallback(response) {
    $scope.items.push(response.data[0]);
   });
@@ -177,8 +177,8 @@ app.controller('itemCtrl', ['$scope', '$http', function ($scope, $http) {
  $scope.remove = function(index,itemid){
   $http({
    method: 'post',
-   url: 'addremove.php',
-   data: {id:itemid,request_type:3},
+   url: 'delete.php',
+   data: {id:itemid},
   }).then(function successCallback(response) {
    $scope.items.splice(index, 1);
   });
@@ -188,7 +188,7 @@ app.controller('itemCtrl', ['$scope', '$http', function ($scope, $http) {
  $scope.addC = function(index,itemid){
   $http({
    method: 'post',
-   url: 'addremove.php',
+   url: 'change.php',
    data: {id:itemid,request_type:4},
   }).then(function successCallback(response) {
    $scope.items.push(response.data[0]);
@@ -199,7 +199,7 @@ app.controller('itemCtrl', ['$scope', '$http', function ($scope, $http) {
  $scope.addI = function(index,itemid){
   $http({
    method: 'post',
-   url: 'addremove.php',
+   url: 'change.php',
    data: {id:itemid,request_type:5},
   }).then(function successCallback(response) {
    $scope.items.push(response.data[0]);
@@ -210,8 +210,8 @@ app.controller('itemCtrl', ['$scope', '$http', function ($scope, $http) {
  $scope.update = function(taskid,item){
   $http({
    method: 'post',
-   url: 'addremove.php',
-   data: {id:taskid,task:item,request_type:6},
+   url: 'update.php',
+   data: {id:taskid,task:item},
   }).then(function successCallback(response) {
    $scope.items.push(response.data[0]);
   });
