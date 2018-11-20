@@ -72,9 +72,9 @@
                             <div class="modal-body">
 
                               <div class="form-group">
-                                <input type="text" class="form-control"  ng-model="temp$index" value="{{x.task}}">
+                                <input type="text" class="form-control"  ng-model="x.task">
                               </div>
-                              <button class="btn btn-warning" ng-disabled="empList.$invalid" ng-click="update({{x.id}},temp{{$index}})">Update</button>
+                              <button class="btn btn-warning" ng-disabled="empList.$invalid" ng-click="update({{x.id}},{{x.task}})">Update</button>
 
 
                             </div>
