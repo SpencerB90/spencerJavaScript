@@ -174,7 +174,7 @@ app.controller('itemCtrl', ['$scope', '$http', function ($scope, $http) {
    url: 'addremove.php',
    data: {task:item,request_type:2},
   }).then(function successCallback(response) {
-   $scope.items = response.data;
+   $scope.items.push(response.data[0]);
   });
  }
 
@@ -196,7 +196,7 @@ app.controller('itemCtrl', ['$scope', '$http', function ($scope, $http) {
    url: 'addremove.php',
    data: {id:itemid,request_type:4},
   }).then(function successCallback(response) {
-   $scope.items = response.data;
+   $scope.items.push(response.data[0]);
   });
  }
 
@@ -207,7 +207,7 @@ app.controller('itemCtrl', ['$scope', '$http', function ($scope, $http) {
    url: 'addremove.php',
    data: {id:itemid,request_type:5},
   }).then(function successCallback(response) {
-   $scope.items = response.data;
+   $scope.items.push(response.data[0]);
   });
  }
 
@@ -218,7 +218,7 @@ app.controller('itemCtrl', ['$scope', '$http', function ($scope, $http) {
    url: 'addremove.php',
    data: {id:taskid,task:item,request_type:6},
   }).then(function successCallback(response) {
-   $scope.items = response.data;
+   $scope.items.push(response.data[0]);
   });
  }
 
