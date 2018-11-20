@@ -40,7 +40,7 @@ if($request_type == 3){
  $Uid = $_POST['itemid'];
 
  mysqli_query($conn,"delete from toDo where id = ('$Uid')");
- //echo 1;
+ echo 1;
 
  while ($row = mysqli_fetch_array($sel)) {
   $data[] = array("id"=>$row['id'],"task"=>$row['task'],"complete"=>$row['complete']);
