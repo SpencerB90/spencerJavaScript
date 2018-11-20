@@ -37,10 +37,14 @@ while ($row = mysqli_fetch_array($sel)) {
 
 // Delete record
 if($request_type == 3){
- $task = $_POST['task'];
+ $id = $_POST['id'];
 
- mysqli_query($conn,"delete from toDo (task) = ('$task')");
+ mysqli_query($conn,"delete from toDo where id = ('$id')");
  //echo 1;
+
+ while ($row = mysqli_fetch_array($sel)) {
+  $data[] = array("id"=>$row['id'],"task"=>$row['task'],"complete"=>$row['complete']);
+ }
 }
 
 
@@ -53,6 +57,10 @@ if($request_type == 4){
  //
  // $return_arr[] = array("id"=>$lastinsert_id,"completed"=>$completed);
  // echo json_encode($return_arr);
+
+ while ($row = mysqli_fetch_array($sel)) {
+  $data[] = array("id"=>$row['id'],"task"=>$row['task'],"complete"=>$row['complete']);
+ }
 }
 
 // Insert completed
@@ -65,6 +73,10 @@ if($request_type == 5){
  //
  // $return_arr[] = array("id"=>$lastinsert_id,"task"=>$task);
  // echo json_encode($return_arr);
+
+ while ($row = mysqli_fetch_array($sel)) {
+  $data[] = array("id"=>$row['id'],"task"=>$row['task'],"complete"=>$row['complete']);
+ }
 }
 
 // Insert completed
@@ -77,6 +89,10 @@ if($request_type == 6){
  //
  // $return_arr[] = array("id"=>$lastinsert_id,"task"=>$task);
  // echo json_encode($return_arr);
+
+ while ($row = mysqli_fetch_array($sel)) {
+  $data[] = array("id"=>$row['id'],"task"=>$row['task'],"complete"=>$row['complete']);
+ }
 }
 
  echo json_encode($data);
