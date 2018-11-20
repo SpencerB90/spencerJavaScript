@@ -54,8 +54,9 @@ if($request_type == 4){
 // Insert completed
 if($request_type == 5){
  $toDo_id = $_POST['toDo_id'];
+ $task = $_POST['task'];
 
- mysqli_query($conn,"update toDo where toDo_id = ('$toDo_id') set (task)  ");
+ mysqli_query($conn,"update toDo where toDo_id = ('$toDo_id') set (task) = ('$task') ");
  // $lastinsert_id = mysqli_insert_id($conn);
  //
  // $return_arr[] = array("id"=>$lastinsert_id,"task"=>$task);
@@ -65,8 +66,9 @@ if($request_type == 5){
 // Insert completed
 if($request_type == 6){
  $toDo_id = $_POST['toDo_id'];
+ $complete = $_POST['complete'];
 
- mysqli_query($conn,"update toDo where toDo_id = ('$toDo_id') set (complete) ");
+ mysqli_query($conn,"update toDo where toDo_id = ('$toDo_id') set (complete) = ('$complete') ");
  // $lastinsert_id = mysqli_insert_id($conn);
  //
  // $return_arr[] = array("id"=>$lastinsert_id,"task"=>$task);
