@@ -35,7 +35,7 @@
           <div class="card-body">
             <h5 class="card-title">To Do List</h5>
             <p class="card-text">
-              <div ng-app="myApp" ng-controller="myCtrl">
+              <div ng-app="myApp" ng-controller="itemCtrl">
                 <input type='text' id='txt' ng-model='item'>
             </p>
             <input type='button' id='but_save' value='Save' ng-click="add(item)" >
@@ -171,7 +171,7 @@
 let app = angular.module("myApp", []);
 
 
-app.controller('myCtrl', ['$scope', '$http', function ($scope, $http) {
+app.controller('itemCtrl', ['$scope', '$http', function ($scope, $http) {
 
  // Get all records
  $http({
