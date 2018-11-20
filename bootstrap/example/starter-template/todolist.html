@@ -19,7 +19,7 @@
 
   </head>
 
-  <body>
+  <body ng-app="myApp" ng-controller="itemCtrl">
 
     <h1> TO DO LIST </h1>
 <hr>
@@ -35,7 +35,7 @@
           <div class="card-body">
             <h5 class="card-title">To Do List</h5>
             <p class="card-text">
-              <div ng-app="myApp" ng-controller="itemCtrl">
+              <div>
                 <input type='text' id='txt' ng-model='item'>
             </p>
             <input type='button' id='but_save' value='Save' ng-click="add(item)" >
@@ -52,7 +52,7 @@
             <h5 class="card-title">Incompleted</h5>
             <p class="card-text">
               <table>
-                <div ng-app="myApp" ng-controller="itemCtrl">
+                <div >
                   <tr ng-repeat="x in items">
                     <td><input type='button' id='but_save' value='Add Complete' ng-click="addC($index,task.item.id)" > {{ x.task }}
 
@@ -104,12 +104,39 @@
             <h5 class="card-title">Completed</h5>
             <p class="card-text">
               <table>
-                <div ng-app="myApp" ng-controller="itemCtrl">
+                <div>
                   <tr ng-repeat="x in items">
                     <td><input type='button' id='but_save' value='Add Incomplete' ng-click="addI($index,task.item.id)" > {{ x.complete }}
 
 
-                    
+                      <!-- Trigger the modal with a button -->
+                      <button type="button"  data-toggle="modal" data-target="#myModal">Edit</button>
+
+                      <!-- Modal -->
+                      <div id="myModal" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+
+                          <!-- Modal content-->
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div class="modal-body">
+
+                              <div class="form-group">
+                                <input type="text" class="form-control" ng-model="x.complete" value="{{x.complete}}">
+                              </div>
+                              <button class="btn btn-warning" ng-disabled="empList.$invalid" ng-click="updateC($index,complete.item.id)">Update</button>
+
+
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+
+                     </a> <input type='button' ng-click='remove($index,task.item.id);' value='Delete'>
+
                     </td>
                   </tr>
                 </div>
