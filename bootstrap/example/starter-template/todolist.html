@@ -54,7 +54,7 @@
               <table>
                 <div >
                   <tr ng-repeat="x in items">
-                    <td><input type='button' id='but_save' value='Add Complete' ng-click="addC($index,task.item.id)" > {{ x.task }}
+                    <td><input type='button' id='but_save' value='Add Complete' ng-click="addC($index,item.id)" > {{ x.task }}
 
 
                       <!-- Trigger the modal with a button -->
@@ -74,7 +74,7 @@
                               <div class="form-group">
                                 <input type="text" class="form-control" ng-model="x.task" value="{{x.task}}">
                               </div>
-                              <button class="btn btn-warning" ng-disabled="empList.$invalid" ng-click="updateT($index,task.item.id)">Update</button>
+                              <button class="btn btn-warning" ng-disabled="empList.$invalid" ng-click="updateT($index,items.id)">Update</button>
 
 
                             </div>
