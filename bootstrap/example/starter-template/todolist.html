@@ -6,30 +6,23 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
-
     <title>Starter Template for Bootstrap</title>
-
     <!-- Bootstrap core CSS -->
     <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
-
     <!-- Custom styles for this template -->
     <link href="starter-template.css" rel="stylesheet">
-
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script> <!-- includes angularjs, has to be in head -->
-
+    <!-- includes angularjs, has to be in head -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>
   </head>
 
   <body ng-app="myApp" ng-controller="itemCtrl">
-
     <h1> TO DO LIST </h1>
-<hr>
+    <hr>
 
     <main role="main" class="container">
-
-
       <div class="row">
 
-        <!-- no header or footer -->
+        <!-- Add to list and database card -->
         <div class=" col-md-4">
             <div class="card">
           <div class="card-body">
@@ -38,6 +31,7 @@
               <div>
                 <input type='text' id='txt' ng-model='item'>
             </p>
+            <!--button to add database values-->
             <input type='button' id='but_save' value='Save' ng-click="add(item)" >
           </div>
           </div>
@@ -45,21 +39,21 @@
       </div>
 
 
-        <!-- no header or footer -->
+        <!-- incomplete part of list card -->
         <div class=" col-md-4">
             <div class="card">
           <div class="card-body">
             <h5 class="card-title">Incompleted</h5>
             <p class="card-text">
-              <table>
+              <table><!-- begin table-->
                 <div >
                   <tr ng-repeat="x in items | filter : {complete:'0'} ">
+                    <!--add to complete button-->
                     <td><input type='button' id='but_save' value='Add Complete' ng-click="addC($index,x.id)" > {{ x.task }}
 
 
-                      <!-- Trigger the modal with a button -->
+                      <!-- Trigger the modal with a button-->
                       <button type="button"  data-toggle="modal" data-target="#myModal{{$index}}">Edit</button>
-
                       <!-- Modal -->
                       <div id="myModal{{$index}}" class="modal fade" role="dialog">
                         <div class="modal-dialog">
@@ -69,100 +63,91 @@
                             <div class="modal-header">
                               <button type="button" class="close" data-dismiss="modal">&times;</button>
                             </div>
-                            <div class="modal-body">
 
+                            <div class="modal-body">
                               <div class="form-group">
                                 <input type="text" class="form-control"  ng-model="x.task">
                               </div>
+                              <!--button to edit database values-->
                               <button class="btn btn-warning" ng-disabled="empList.$invalid" ng-click="update(x.id,x.task)">Update</button>
-
-
                             </div>
                           </div>
 
                         </div>
-                      </div>
+                      </div><!-- end modal-->
 
-
-
+                      <!--to delete button-->
                       <input type='button' ng-click='remove($index,x.id);' value='Delete'></td>
-                  </tr>
+                  </tr><!-- end table row-->
                 </div>
-              </table>
+              </table><!-- end table-->
             </p>
 
           </div>
         </div>
-      </div>
+      </div><!--end incomplete card-->
 
-
-
-        <!-- no header or footer -->
+        <!-- Completed part of list card-->
         <div class=" col-md-4">
-            <div class="card">
-          <div class="card-body">
+          <div class="card">
+            <div class="card-body">
             <h5 class="card-title">Completed</h5>
             <p class="card-text">
+
               <table>
                 <div>
                   <tr ng-repeat="x in items | filter : {complete:'1'}">
+                    <!--add to incomplete button-->
                     <td><input type='button' id='but_save' value='Add Incomplete' ng-click="addI($index,x.id)" > {{ x.task }}
 
-
-                      <!-- Trigger the modal with a button -->
+                      <!-- Trigger the modal with a button to edit database value -->
                       <button type="button"  data-toggle="modal" data-target="#myModal2{{$index}}">Edit</button>
-
                       <!-- Modal -->
                       <div id="myModal2{{$index}}" class="modal fade" role="dialog">
                         <div class="modal-dialog">
 
                           <!-- Modal content-->
                           <div class="modal-content">
+
                             <div class="modal-header">
                               <button type="button" class="close" data-dismiss="modal">&times;</button>
                             </div>
-                            <div class="modal-body">
 
+                            <div class="modal-body">
                               <div class="form-group">
                                 <input type="text" class="form-control" ng-model="x.task">
                               </div>
+                              <!--button to edit database values-->
                               <button class="btn btn-warning" ng-disabled="empList.$invalid" ng-click="update(x.id,x.task)">Update</button>
-
-
                             </div>
+
                           </div>
 
                         </div>
-                      </div>
+                      </div><!-- end modal-->
 
+                      <!-- to delete button-->
                     </a> <input type='button' ng-click='remove($index,x.id);' value='Delete'>
 
                     </td>
-                  </tr>
+                  </tr><!--end table row-->
                 </div>
               </table>
-            </p>
 
+            </p>
           </div>
         </div>
-      </div>
+      </div><!-- end complete card-->
 
     </div>
 
-
-
-    </main><!-- /.container -->
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-
-
+  </main><!-- end main container -->
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
     <script src="../../assets/js/vendor/popper.min.js"></script>
     <script src="../../dist/js/bootstrap.min.js"></script>
+
   </body>
 </html>
 
@@ -170,15 +155,12 @@
 <script>
 let app = angular.module("myApp", []);
 
-
 app.controller('itemCtrl', ['$scope', '$http', function ($scope, $http) {
-
 
  $http.get("addremove.php")
     .then(function(response) {
         $scope.items = response.data;
     });
-
 
  // Add new record
  $scope.add = function(item){
@@ -188,13 +170,11 @@ app.controller('itemCtrl', ['$scope', '$http', function ($scope, $http) {
    data: {task:item,request_type:2},
   }).then(function successCallback(response) {
    $scope.items.push(response.data[0]);
-
   });
  }
 
  // Remove record
  $scope.remove = function(index,itemid){
-
   $http({
    method: 'post',
    url: 'addremove.php',
@@ -204,8 +184,6 @@ app.controller('itemCtrl', ['$scope', '$http', function ($scope, $http) {
   });
  }
 
-
-//to be done
  // Add to completed
  $scope.addC = function(index,itemid){
   $http({
@@ -239,7 +217,5 @@ app.controller('itemCtrl', ['$scope', '$http', function ($scope, $http) {
   });
  }
 
-
 }]);
-
 </script>
