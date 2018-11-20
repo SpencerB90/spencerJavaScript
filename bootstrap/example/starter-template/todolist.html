@@ -72,7 +72,7 @@
                             <div class="modal-body">
 
                               <div class="form-group">
-                                <input type="text" class="form-control" ng-model="x.task" value="{{x.task}}">
+                                <input type="text" class="form-control" ng-model="x.task" value="{{x.task['$index']}}">
                               </div>
                               <button class="btn btn-warning" ng-disabled="empList.$invalid" ng-click="update(x.id,x.task)">Update</button>
 
