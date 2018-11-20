@@ -78,7 +78,7 @@ if($request_type == 5){
 }
 
 //not done
-// updating incomplete
+// updating
 if($request_type == 6){
  $id = $_POST['id'];
  $complete = $_POST['task'];
@@ -94,21 +94,7 @@ if($request_type == 6){
  }
 }
 
-//updating complete
-if($request_type == 7){
- $id = $_POST['id'];
- $complete = $_POST['complete'];
 
- mysqli_query($conn,"update toDo where id = ('$id') set (complete) = ('$complete') ");
- // $lastinsert_id = mysqli_insert_id($conn);
- //
- // $return_arr[] = array("id"=>$lastinsert_id,"task"=>$task);
- // echo json_encode($return_arr);
-
- while ($row = mysqli_fetch_array($sel)) {
-  $data[] = array("id"=>$row['id'],"task"=>$row['task'],"complete"=>$row['complete']);
- }
-}
 
  echo json_encode($data);
 

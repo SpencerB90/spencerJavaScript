@@ -74,7 +74,7 @@
                               <div class="form-group">
                                 <input type="text" class="form-control" ng-model="x.task" value="{{x.task}}">
                               </div>
-                              <button class="btn btn-warning" ng-disabled="empList.$invalid" ng-click="updateT($index,x.task)">Update</button>
+                              <button class="btn btn-warning" ng-disabled="empList.$invalid" ng-click="update($index,x.task)">Update</button>
 
 
                             </div>
@@ -124,9 +124,9 @@
                             <div class="modal-body">
 
                               <div class="form-group">
-                                <input type="text" class="form-control" ng-model="x.complete" value="{{x.complete}}">
+                                <input type="text" class="form-control" ng-model="x.complete" value="{{x.task}}">
                               </div>
-                              <button class="btn btn-warning" ng-disabled="empList.$invalid" ng-click="updateC($index,x.complete)">Update</button>
+                              <button class="btn btn-warning" ng-disabled="empList.$invalid" ng-click="update($index,x.task)">Update</button>
 
 
                             </div>
@@ -229,7 +229,7 @@ app.controller('itemCtrl', ['$scope', '$http', function ($scope, $http) {
  }
 
 //update task
- $scope.updateT = function(index,item){
+ $scope.update = function(index,item){
   $http({
    method: 'post',
    url: 'addremove.php',
@@ -238,19 +238,6 @@ app.controller('itemCtrl', ['$scope', '$http', function ($scope, $http) {
    $scope.items.push(response.data[0]);
   });
  }
-
-
-//update complete
- $scope.updateC = function(index,item){
-  $http({
-   method: 'post',
-   url: 'addremove.php',
-   data: {complete:item,request_type:7},
-  }).then(function successCallback(response) {
-   $scope.items.push(response.data[0]);
-  });
- }
-
 
 
 }]);
