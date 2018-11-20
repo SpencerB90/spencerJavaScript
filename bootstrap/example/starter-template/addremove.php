@@ -11,7 +11,7 @@ $request_type = $_POST['request_type'];
 
 // Get all records
 if($request_type == 1){
- $sel = mysqli_query($conn,"SELECT * FROM toDo");
+ $sel = mysqli_query($conn,"SELECT toDo_id, task, complete FROM toDo");
  $data = array();
 
  while ($row = mysqli_fetch_array($sel)) {
