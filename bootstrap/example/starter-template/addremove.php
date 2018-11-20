@@ -47,7 +47,6 @@ if($request_type == 3){
  }
 }
 
-
 // Insert into completed
 if($request_type == 4){
  $Uid = $_POST['id'];
@@ -65,9 +64,9 @@ if($request_type == 4){
 
 // Insert incomplete
 if($request_type == 5){
- $id = $_POST['id'];
+ $Uid = $_POST['id'];
 
- mysqli_query($conn,"update toDo where id = ('$id') set (task) = (complete) ");
+ mysqli_query($conn,"update toDo where id = ('$Uid') set (task) = (complete) ");
  // $lastinsert_id = mysqli_insert_id($conn);
  //
  // $return_arr[] = array("id"=>$lastinsert_id,"task"=>$task);
@@ -78,6 +77,7 @@ if($request_type == 5){
  }
 }
 
+//not done
 // updating incomplete
 if($request_type == 6){
  $id = $_POST['id'];

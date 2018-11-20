@@ -173,15 +173,7 @@ let app = angular.module("myApp", []);
 
 app.controller('itemCtrl', ['$scope', '$http', function ($scope, $http) {
 
- // Get all records
- // $http({
- //  method: 'post',
- //  url: 'addremove.php',
- //  data: {request_type:1},
- //
- // }).then(function successCallback(response) {
- //  $scope.items = response.data;
- // });
+
  $http.get("addremove.php")
     .then(function(response) {
         $scope.items = response.data;
@@ -213,7 +205,6 @@ app.controller('itemCtrl', ['$scope', '$http', function ($scope, $http) {
  }
 
 
-
 //to be done
  // Add to completed
  $scope.addC = function(index,itemid){
@@ -231,7 +222,7 @@ app.controller('itemCtrl', ['$scope', '$http', function ($scope, $http) {
   $http({
    method: 'post',
    url: 'addremove.php',
-   data: {task:$scope.task,request_type:5},
+   data: {id:itemid,request_type:5},
   }).then(function successCallback(response) {
    $scope.items.push(response.data[0]);
   });
@@ -242,7 +233,7 @@ app.controller('itemCtrl', ['$scope', '$http', function ($scope, $http) {
   $http({
    method: 'post',
    url: 'addremove.php',
-   data: {itemid:itemid,request_type:6},
+   data: {task:$scope.task,request_type:6},
   }).then(function successCallback(response) {
    $scope.items.push(response.data[0]);
   });
@@ -254,7 +245,7 @@ app.controller('itemCtrl', ['$scope', '$http', function ($scope, $http) {
   $http({
    method: 'post',
    url: 'addremove.php',
-   data: {itemid:itemid,request_type:7},
+   data: {task:$scope.task,request_type:7},
   }).then(function successCallback(response) {
    $scope.items.push(response.data[0]);
   });
