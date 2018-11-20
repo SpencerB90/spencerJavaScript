@@ -105,7 +105,7 @@
             <p class="card-text">
               <table>
                 <div>
-                  <tr ng-repeat="x in items ">
+                  <tr ng-repeat="x in items | filter:'' track by $index">
                     <td><input type='button' id='but_save' value='Add Incomplete' ng-click="addI($index,task.item.id)" > {{ x.complete }}
 
 
