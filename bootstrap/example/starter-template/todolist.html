@@ -53,7 +53,7 @@
             <p class="card-text">
               <table>
                 <div >
-                  <tr ng-repeat="x in items | filter : 0 ">
+                  <tr ng-repeat="x in items | filter : {complete:'0'} ">
                     <td><input type='button' id='but_save' value='Add Complete' ng-click="addC($index,x.id)" > {{ x.task }}
 
 
