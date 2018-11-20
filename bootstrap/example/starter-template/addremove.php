@@ -37,7 +37,7 @@ while ($row = mysqli_fetch_array($sel)) {
 
 // Delete record
 if($request_type == 3){
- $Uid = $_POST['id'];
+ $Uid = $_POST['itemid'];
 
  mysqli_query($conn,"delete from toDo where id = ('$Uid')");
  //echo 1;
