@@ -11,11 +11,11 @@ $request_type = $_POST['request_type'];
 
 // Get all records
 //if($request_type == 1){
- $sel = mysqli_query($conn,"SELECT toDo_id, task, complete FROM toDo");
+ $sel = mysqli_query($conn,"SELECT id, task, complete FROM toDo");
  $data = array();
 
  while ($row = mysqli_fetch_array($sel)) {
-  $data[] = array("id"=>$row['toDo_id'],"task"=>$row['task'],"complete"=>$row['complete']);
+  $data[] = array("id"=>$row['id'],"task"=>$row['task'],"complete"=>$row['complete']);
  }
  echo json_encode($data);
 //}
@@ -33,18 +33,18 @@ if($request_type == 2){
 
 // Delete record
 if($request_type == 3){
- $toDo_id = $_POST['toDo_id'];
+ $id = $_POST['id'];
 
- mysqli_query($conn,"delete from toDo where toDo_id = ('$toDo_id')");
+ mysqli_query($conn,"delete from toDo where id = ('$id')");
  echo 1;
 }
 
 
 // Insert into completed
 if($request_type == 4){
- $toDo_id = $_POST['toDo_id'];
+ $id = $_POST['id'];
 
- mysqli_query($conn,"update toDo where toDo_id = ('$toDo_id') set (complete) = (task), remove (task)");
+ mysqli_query($conn,"update toDo where id = ('$id') set (complete) = (task), remove (task)");
  // $lastinsert_id = mysqli_insert_id($conn);
  //
  // $return_arr[] = array("id"=>$lastinsert_id,"completed"=>$completed);
@@ -53,10 +53,10 @@ if($request_type == 4){
 
 // Insert completed
 if($request_type == 5){
- $toDo_id = $_POST['toDo_id'];
+ $id = $_POST['id'];
  $task = $_POST['task'];
 
- mysqli_query($conn,"update toDo where toDo_id = ('$toDo_id') set (task) = ('$task') ");
+ mysqli_query($conn,"update toDo where id = ('$id') set (task) = ('$task') ");
  // $lastinsert_id = mysqli_insert_id($conn);
  //
  // $return_arr[] = array("id"=>$lastinsert_id,"task"=>$task);
@@ -65,10 +65,10 @@ if($request_type == 5){
 
 // Insert completed
 if($request_type == 6){
- $toDo_id = $_POST['toDo_id'];
+ $id = $_POST['id'];
  $complete = $_POST['complete'];
 
- mysqli_query($conn,"update toDo where toDo_id = ('$toDo_id') set (complete) = ('$complete') ");
+ mysqli_query($conn,"update toDo where id = ('$id') set (complete) = ('$complete') ");
  // $lastinsert_id = mysqli_insert_id($conn);
  //
  // $return_arr[] = array("id"=>$lastinsert_id,"task"=>$task);
