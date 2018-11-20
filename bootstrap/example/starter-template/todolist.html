@@ -54,7 +54,7 @@
               <table>
                 <div >
                   <tr ng-repeat="x in items">
-                    <td><input type='button' id='but_save' value='Add Complete' ng-click="addC($index,task.item.id)" > {{ x.task }}
+                    <td><input type='button' id='but_save' value='Add Complete' ng-click="addC(item)" > {{ x.task }}
 
 
                       <!-- Trigger the modal with a button -->
@@ -74,7 +74,7 @@
                               <div class="form-group">
                                 <input type="text" class="form-control" ng-model="x.task" value="{{x.task}}">
                               </div>
-                              <button class="btn btn-warning" ng-disabled="empList.$invalid" ng-click="updateT($index,task.item.id)">Update</button>
+                              <button class="btn btn-warning" ng-disabled="empList.$invalid" ng-click="updateT(item)">Update</button>
 
 
                             </div>
@@ -85,7 +85,7 @@
 
 
 
-                      <input type='button' ng-click='remove($index,task.item.id);' value='Delete'></td>
+                      <input type='button' ng-click='remove(item);' value='Delete'></td>
                   </tr>
                 </div>
               </table>
@@ -200,7 +200,7 @@ app.controller('itemCtrl', ['$scope', '$http', function ($scope, $http) {
  }
 
  // Remove record
- $scope.remove = function(index,itemid){
+ $scope.remove = function(item){
 
   $http({
    method: 'post',
@@ -214,7 +214,7 @@ app.controller('itemCtrl', ['$scope', '$http', function ($scope, $http) {
 
  //for completed list
  // Add new record
- $scope.addC = function(index,itemid){
+ $scope.addC = function(item){
   $http({
    method: 'post',
    url: 'addremove.php',
@@ -226,7 +226,7 @@ app.controller('itemCtrl', ['$scope', '$http', function ($scope, $http) {
 
  //for completed list
  // Add new record
- $scope.addI = function(index,itemid){
+ $scope.addI = function(item){
   $http({
    method: 'post',
    url: 'addremove.php',
@@ -236,7 +236,7 @@ app.controller('itemCtrl', ['$scope', '$http', function ($scope, $http) {
   });
  }
 
- $scope.updateT = function(index,itemid){
+ $scope.updateT = function(item){
   $http({
    method: 'post',
    url: 'addremove.php',
@@ -246,7 +246,7 @@ app.controller('itemCtrl', ['$scope', '$http', function ($scope, $http) {
   });
  }
 
- $scope.updateC = function(index,itemid){
+ $scope.updateC = function(item){
   $http({
    method: 'post',
    url: 'addremove.php',
