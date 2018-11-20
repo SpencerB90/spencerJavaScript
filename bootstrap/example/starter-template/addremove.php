@@ -51,7 +51,7 @@ if($request_type == 3){
 if($request_type == 4){
  $Uid = $_POST['id'];
 
- mysqli_query($conn,"update toDo set complete = task where id = ('$Uid')");
+ mysqli_query($conn,"update toDo set complete = 1 where id = ('$Uid')");
  // $lastinsert_id = mysqli_insert_id($conn);
  //
  // $return_arr[] = array("id"=>$lastinsert_id,"completed"=>$completed);
@@ -66,7 +66,7 @@ if($request_type == 4){
 if($request_type == 5){
  $Uid = $_POST['id'];
 
- mysqli_query($conn,"update toDo set task = complete where id = ('$Uid') ");
+ mysqli_query($conn,"update toDo set complete = 0 where id = ('$Uid') ");
  // $lastinsert_id = mysqli_insert_id($conn);
  //
  // $return_arr[] = array("id"=>$lastinsert_id,"task"=>$task);
