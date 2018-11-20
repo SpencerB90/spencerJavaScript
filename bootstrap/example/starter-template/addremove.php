@@ -18,6 +18,9 @@ $request_type = $_POST['request_type'];
   $data[] = array("id"=>$row['id'],"task"=>$row['task'],"complete"=>$row['complete']);
  }
 
+ //sends back data to html for the while row update pulls
+  echo json_encode($data);
+
 // Insert task
 if($request_type == 2){
  $task = $_POST['task'];
@@ -26,6 +29,9 @@ if($request_type == 2){
 
 while ($row = mysqli_fetch_array($sel)) {
  $data[] = array("id"=>$row['id'],"task"=>$row['task'],"complete"=>$row['complete']);
+
+ //sends back data to html for the while row update pulls
+  echo json_encode($data);
 }
 }
 
@@ -38,6 +44,9 @@ if($request_type == 3){
 
  while ($row = mysqli_fetch_array($sel)) {
   $data[] = array("id"=>$row['id'],"task"=>$row['task'],"complete"=>$row['complete']);
+
+  //sends back data to html for the while row update pulls
+   echo json_encode($data);
  }
 }
 
@@ -49,6 +58,9 @@ if($request_type == 4){
 
  while ($row = mysqli_fetch_array($sel)) {
   $data[] = array("id"=>$row['id'],"task"=>$row['task'],"complete"=>$row['complete']);
+
+  //sends back data to html for the while row update pulls
+   echo json_encode($data);
  }
 }
 
@@ -60,6 +72,9 @@ if($request_type == 5){
 
  while ($row = mysqli_fetch_array($sel)) {
   $data[] = array("id"=>$row['id'],"task"=>$row['task'],"complete"=>$row['complete']);
+
+  //sends back data to html for the while row update pulls
+   echo json_encode($data);
  }
 }
 
@@ -72,9 +87,11 @@ if($request_type == 6){
 
  while ($row = mysqli_fetch_array($sel)) {
   $data[] = array("id"=>$row['id'],"task"=>$row['task'],"complete"=>$row['complete']);
+
+  //sends back data to html for the while row update pulls
+   echo json_encode($data);
  }
 }
 
-//sends back data to html for the while row update pulls
- echo json_encode($data);
+
 ?>
