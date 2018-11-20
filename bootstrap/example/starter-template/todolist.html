@@ -52,7 +52,7 @@
             <h5 class="card-title">Incompleted</h5>
             <p class="card-text">
               <table>
-                <div ng-app="myApp" ng-controller="myCtrl">
+                <div ng-app="myApp" ng-controller="itemCtrl">
                   <tr ng-repeat="x in items">
                     <td><input type='button' id='but_save' value='Add Complete' ng-click="addC($index,task.item.id)" > {{ x.task }}
 
@@ -104,7 +104,7 @@
             <h5 class="card-title">Completed</h5>
             <p class="card-text">
               <table>
-                <div ng-app="myApp" ng-controller="myCtrl">
+                <div ng-app="myApp" ng-controller="itemCtrl">
                   <tr ng-repeat="x in items">
                     <td><input type='button' id='but_save' value='Add Incomplete' ng-click="addI($index,task.item.id)" > {{ x.complete }}
 
