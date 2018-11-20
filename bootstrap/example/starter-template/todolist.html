@@ -230,11 +230,10 @@ app.controller('itemCtrl', ['$scope', '$http', function ($scope, $http) {
 
 //update task
  $scope.update = function(taskid,item){
-   alert("taskid");
   $http({
    method: 'post',
    url: 'addremove.php',
-   data: {id:taskid,task:item,request_type:6},
+   data: {id:63,task:"hrllo",request_type:6},
   }).then(function successCallback(response) {
    $scope.items.push(response.data[0]);
   });
