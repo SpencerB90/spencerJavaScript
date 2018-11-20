@@ -50,9 +50,9 @@ if($request_type == 3){
 
 // Insert into completed
 if($request_type == 4){
- $id = $_POST['id'];
+ $Uid = $_POST['id'];
 
- mysqli_query($conn,"update toDo where id = ('$id') set (complete) = (task)");
+ mysqli_query($conn,"update toDo where id = ('$Uid') set (complete) = (task)");
  // $lastinsert_id = mysqli_insert_id($conn);
  //
  // $return_arr[] = array("id"=>$lastinsert_id,"completed"=>$completed);

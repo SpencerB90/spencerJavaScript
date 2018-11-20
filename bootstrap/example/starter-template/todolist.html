@@ -220,7 +220,7 @@ app.controller('itemCtrl', ['$scope', '$http', function ($scope, $http) {
   $http({
    method: 'post',
    url: 'addremove.php',
-   data: {task:$scope.task,request_type:4},
+   data: {id:itemid,request_type:4},
   }).then(function successCallback(response) {
    $scope.items.push(response.data[0]);
   });
