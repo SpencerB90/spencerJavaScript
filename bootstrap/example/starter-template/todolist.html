@@ -174,15 +174,20 @@ let app = angular.module("myApp", []);
 app.controller('itemCtrl', ['$scope', '$http', function ($scope, $http) {
 
  // Get all records
- $http({
-  method: 'post',
-  url: 'addremove.php',
-  data: {request_type:1},
+ // $http({
+ //  method: 'post',
+ //  url: 'addremove.php',
+ //  data: {request_type:1},
+ //
+ // }).then(function successCallback(response) {
+ //  $scope.items = response.data;
+ // });
+ $http.get("addremove.php")
+    .then(function(response) {
+        $scope.items = response.data;
+    });
 
- }).then(function successCallback(response) {
-  $scope.items = response.data;
- });
-
+    
  // Add new record
  $scope.add = function(item){
   $http({

@@ -10,7 +10,7 @@ $request_type = $_POST['request_type'];
 
 
 // Get all records
-if($request_type == 1){
+//if($request_type == 1){
  $sel = mysqli_query($conn,"SELECT toDo_id, task, complete FROM toDo");
  $data = array();
 
@@ -18,7 +18,7 @@ if($request_type == 1){
   $data[] = array("id"=>$row['toDo_id'],"task"=>$row['task'],"complete"=>$row['complete']);
  }
  echo json_encode($data);
-}
+//}
 
 // Insert task
 if($request_type == 2){
