@@ -83,7 +83,7 @@ if($request_type == 6){
  $Uid = $_POST['id'];
  $task = $_POST['task'];
 
- mysqli_query($conn,"update toDo set task = '$task' WHERE id = " . $Uid . "");
+ mysqli_query($conn,"update toDo set task = '$task' WHERE id = ('$Uid') ");
  // $lastinsert_id = mysqli_insert_id($conn);
  //
  // $return_arr[] = array("id"=>$lastinsert_id,"task"=>$task);
