@@ -85,7 +85,7 @@
 
 
 
-                      <input type='button' ng-click='remove($index,item.id);' value='Delete'></td>
+                      <input type='button' ng-click='remove($index,x.id);' value='Delete'></td>
                   </tr>
                 </div>
               </table>
@@ -206,7 +206,7 @@ app.controller('itemCtrl', ['$scope', '$http', function ($scope, $http) {
   $http({
    method: 'post',
    url: 'addremove.php',
-   data: {itemid:itemid,request_type:3},
+   data: {id:itemid,request_type:3},
   }).then(function successCallback(response) {
    $scope.items.splice(index, 1);
   });
