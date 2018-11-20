@@ -54,7 +54,7 @@
               <table>
                 <div >
                   <tr ng-repeat="x in items">
-                    <td><input type='button' id='but_save' value='Add Complete' ng-click="addC($index,item.id)" > {{ x.task }}
+                    <td><input type='button' id='but_save' value='Add Complete' ng-click="addC($index,x.id)" > {{ x.task }}
 
 
                       <!-- Trigger the modal with a button -->
@@ -74,7 +74,7 @@
                               <div class="form-group">
                                 <input type="text" class="form-control" ng-model="x.task" value="{{x.task}}">
                               </div>
-                              <button class="btn btn-warning" ng-disabled="empList.$invalid" ng-click="updateT($index,items.id)">Update</button>
+                              <button class="btn btn-warning" ng-disabled="empList.$invalid" ng-click="updateT($index,x.task)">Update</button>
 
 
                             </div>
@@ -106,7 +106,7 @@
               <table>
                 <div>
                   <tr ng-repeat="x in items">
-                    <td><input type='button' id='but_save' value='Add Incomplete' ng-click="addI($index,task.item.id)" > {{ x.complete }}
+                    <td><input type='button' id='but_save' value='Add Incomplete' ng-click="addI($index,x.id)" > {{ x.complete }}
 
 
                       <!-- Trigger the modal with a button -->
@@ -126,7 +126,7 @@
                               <div class="form-group">
                                 <input type="text" class="form-control" ng-model="x.complete" value="{{x.complete}}">
                               </div>
-                              <button class="btn btn-warning" ng-disabled="empList.$invalid" ng-click="updateC($index,item.id)">Update</button>
+                              <button class="btn btn-warning" ng-disabled="empList.$invalid" ng-click="updateC($index,x.complete)">Update</button>
 
 
                             </div>
@@ -229,11 +229,11 @@ app.controller('itemCtrl', ['$scope', '$http', function ($scope, $http) {
  }
 
 //update task
- $scope.updateT = function(index,itemid){
+ $scope.updateT = function(index,item){
   $http({
    method: 'post',
    url: 'addremove.php',
-   data: {task:$scope.task,request_type:6},
+   data: {task:item,request_type:6},
   }).then(function successCallback(response) {
    $scope.items.push(response.data[0]);
   });
@@ -241,11 +241,11 @@ app.controller('itemCtrl', ['$scope', '$http', function ($scope, $http) {
 
 
 //update complete
- $scope.updateC = function(index,itemid){
+ $scope.updateC = function(index,item){
   $http({
    method: 'post',
    url: 'addremove.php',
-   data: {task:$scope.task,request_type:7},
+   data: {complete:item,request_type:7},
   }).then(function successCallback(response) {
    $scope.items.push(response.data[0]);
   });
