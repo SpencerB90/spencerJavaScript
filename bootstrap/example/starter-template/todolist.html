@@ -194,9 +194,8 @@ app.controller('itemCtrl', ['$scope', '$http', function ($scope, $http) {
    method: 'post',
    url: 'addremove.php',
    data: {task:item,request_type:2},
-  }).then(function successCallback(response) {
+  }).then(function (response) {
     $scope.items = response.data;
-
   });
  }
 
