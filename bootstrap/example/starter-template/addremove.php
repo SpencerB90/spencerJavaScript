@@ -80,10 +80,10 @@ if($request_type == 5){
 //not done
 // updating
 if($request_type == 6){
- $id = $_POST['id'];
+ $Uid = $_POST['id'];
  $task = $_POST['task'];
 
- mysqli_query($conn,"update toDo set task = ''$task' WHERE id = $id ");
+ mysqli_query($conn,"update toDo set task = '$task' WHERE id = $Uid ");
  // $lastinsert_id = mysqli_insert_id($conn);
  //
  // $return_arr[] = array("id"=>$lastinsert_id,"task"=>$task);
