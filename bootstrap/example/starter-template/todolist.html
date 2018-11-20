@@ -230,6 +230,7 @@ app.controller('itemCtrl', ['$scope', '$http', function ($scope, $http) {
 
 //update task
  $scope.update = function(taskid,item){
+   alert("taskid");
   $http({
    method: 'post',
    url: 'addremove.php',
